@@ -1,0 +1,11 @@
+{
+  "github_repo": "https://github.com/cidautai/DarkIR",
+  "github_commit": "0910291157ad04f210481a002cf6bb480f6a7f18",
+  "weights_repo": "https://huggingface.co/Cidaut/DarkIR",
+  "weights_commit": "8a73ebf271c513dfda9d1df444762d8aa0b42138",
+  "weights_url": "https://huggingface.co/Cidaut/DarkIR/resolve/8a73ebf271c513dfda9d1df444762d8aa0b42138/DarkIR_384.pt",
+  "weights_sha256": "61eee7d5cfb593d408fba4c716874449b324ed1f49cbff97c2a25ce2fcbe4fde",
+  "weights_bytes": 13397397,
+  "weights_license_from_model_card": "CC-BY-4.0",
+  "code_license": "MIT"
+}

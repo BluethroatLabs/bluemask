@@ -1,0 +1,173 @@
+{
+  "generated_at_utc": "2026-09-06T14:17:30.602Z",
+  "synthetic_only": true,
+  "renderer": "BlueMaskEngine.render",
+  "engine_sha256": "5bb27f45846222924a8136f80717ea53578a02551628e7dade75e14a08dcb383",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/152.0.7977.77",
+    "revision": "@529d9a34b491745086b59458f58a5aae8292adaa",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "jsVersion": "15.2.124.19"
+  },
+  "browser_network_emulation": "offline",
+  "source_image_loaded_from": "inline data URL",
+  "files": [
+    {
+      "input": "evidence/ai/fixtures/00-original.png",
+      "input_sha256": "069d556c549dc5f1644df0e9ff011b9edeb2c0ea69f999feebe513d78c4df910",
+      "output": "evidence/ai/fixtures/00-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/01-original.png",
+      "input_sha256": "750925eac394c294b987c6a0366a90db0c8b01da84a979877beacbf992305cb4",
+      "output": "evidence/ai/fixtures/01-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/02-original.png",
+      "input_sha256": "991df1c943714b5f9b10b9770c9d46160dacc45ce629ab088d9b78aed84b0004",
+      "output": "evidence/ai/fixtures/02-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/03-original.png",
+      "input_sha256": "5d620cdc70e60c9dd0e9fbfe04e1652aec85eaf5398ee7cc185b96c1e03e30a7",
+      "output": "evidence/ai/fixtures/03-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/04-original.png",
+      "input_sha256": "def3e3481609f4920ced64ae9c4741d97494baaf9b3869713c6b7fd71271421f",
+      "output": "evidence/ai/fixtures/04-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/05-original.png",
+      "input_sha256": "3c62d1d265d702790c1dcbe093ef80d83b70fbb948332aae24717732b379fb59",
+      "output": "evidence/ai/fixtures/05-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/06-original.png",
+      "input_sha256": "1476117de306bb09ecfdf95b5feeb5744c9c93843d01cb979d173802345e44f4",
+      "output": "evidence/ai/fixtures/06-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/07-original.png",
+      "input_sha256": "a138006059bc4bca87fe1ece72d41213ea8d2f2923193ffac0698962be196cdc",
+      "output": "evidence/ai/fixtures/07-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/08-original.png",
+      "input_sha256": "524c71205d01c239a6453e8065fd999cf018582a3f1d7ecb6be59bb616b5fb3e",
+      "output": "evidence/ai/fixtures/08-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/09-original.png",
+      "input_sha256": "e660851d1006e33410d78556265f9f89db1dab0401e515d0f21b9be392f76e6a",
+      "output": "evidence/ai/fixtures/09-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/10-original.png",
+      "input_sha256": "07e772940976d8f60ed3f7f86b0d50552f49cf851b22765ce3ccc0923eccbba3",
+      "output": "evidence/ai/fixtures/10-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "input": "evidence/ai/fixtures/11-original.png",
+      "input_sha256": "130e504c82a50f58851d95aee2102fb8f6ffc011a4ff0ce687746094725e4832",
+      "output": "evidence/ai/fixtures/11-secure.png",
+      "output_sha256": "d84408e606dbd34b92dee983753fabb6d6cdfad7b2b2a1c4b6730f032269659f",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    }
+  ]
+}

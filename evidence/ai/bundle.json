@@ -1,0 +1,10 @@
+{
+  "file": "bluemask-model-evidence.zip",
+  "bytes": 1742132,
+  "sha256": "11850585860e071292078d697678032de41315e00ff8e3ca24565ae5d3eba42e",
+  "files": 186,
+  "synthetic_only": true,
+  "model_weights_included": false,
+  "environment_included": false,
+  "reproduction_entrypoint": "research/README.md"
+}

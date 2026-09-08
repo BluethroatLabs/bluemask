@@ -1,0 +1,10 @@
+# Keep source bytes stable for release hashes across operating systems.
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.woff2 binary
+*.zip binary
+# Preserve upstream source bytes used by the recorded model provenance.
+research/dpir/** -text
+research/darkir/** -text
+research/concertormer/** -text

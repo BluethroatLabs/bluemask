@@ -1,0 +1,41 @@
+{
+  "seconds": 8.556,
+  "summary": [
+    {
+      "method": "clear",
+      "gaussian_sigma": null,
+      "samples": 12,
+      "exact_ocr_before": 12,
+      "exact_ocr_after": 12,
+      "new_exact_recoveries": 0,
+      "lost_exact_recoveries": 0
+    },
+    {
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "samples": 12,
+      "exact_ocr_before": 12,
+      "exact_ocr_after": 6,
+      "new_exact_recoveries": 0,
+      "lost_exact_recoveries": 6
+    },
+    {
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "samples": 12,
+      "exact_ocr_before": 9,
+      "exact_ocr_after": 0,
+      "new_exact_recoveries": 0,
+      "lost_exact_recoveries": 9
+    },
+    {
+      "method": "secure",
+      "gaussian_sigma": null,
+      "samples": 12,
+      "exact_ocr_before": 0,
+      "exact_ocr_after": 0,
+      "new_exact_recoveries": 0,
+      "lost_exact_recoveries": 0
+    }
+  ]
+}

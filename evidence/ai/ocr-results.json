@@ -1,0 +1,1058 @@
+[
+  {
+    "file": "evidence/ai/fixtures/00-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "54791098"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/00-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "54791098"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/00-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "54791098"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/00-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/01-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "49900344"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/01-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 0.5,
+        "text": "49900344"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/01-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "49900344"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/01-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/02-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "21103366"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/02-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "21103366"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/02-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "21103366"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/02-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/03-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "21571740"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/03-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "21571740"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/03-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "21571740"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/03-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/04-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "87625328"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/04-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "87625328"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/04-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "87625328"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/04-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/05-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "30008867"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/05-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 0.5,
+        "text": "30088867"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/05-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "30008867"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/05-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/06-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "80764230"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/06-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 0.5,
+        "text": "88764230"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/06-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "80764230"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/06-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/07-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "36894692"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/07-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "36894692"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/07-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "36894692"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/07-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/08-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "11278918"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/08-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "11278918"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/08-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "11278918"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/08-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/09-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "84134201"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/09-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 0.5,
+        "text": "84134201"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/09-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "84134201"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/09-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/10-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "73653269"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/10-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "73653269"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/10-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "73653269"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/10-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/11-gaussian-2_0.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "70552007"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/11-gaussian-3_0.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "78552087"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/11-original.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      },
+      {
+        "confidence": 1,
+        "text": "70552007"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/fixtures/11-secure.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "SYNTHETIC BENCHMARK"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/00-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENORUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "54791098"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/00-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "54791098"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/00-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/00-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/01-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENORUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "49900344"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/01-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "49900344"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/01-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/01-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/02-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENDRUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "21103366"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/02-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "21103366"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/02-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/02-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/03-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENDRUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "21571740"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/03-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "21571740"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/03-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/03-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/04-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENDFUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "87625328"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/04-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "87625328"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/04-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/04-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/05-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENDRUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "30008867"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/05-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "30008867"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/05-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/05-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/06-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENDRUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "80764230"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/06-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "80764230"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/06-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/06-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/07-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENORISKI"
+      },
+      {
+        "confidence": 1,
+        "text": "36894692"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/07-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "36894692"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/07-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/07-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/08-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENDRUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "11278918"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/08-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "11278918"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/08-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/08-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/09-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENOMURK"
+      },
+      {
+        "confidence": 1,
+        "text": "84134201"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/09-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "84134201"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/09-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/09-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/10-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENDFUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "73653269"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/10-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "73653269"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/10-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/10-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/11-gaussian-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "SINTHETIC BENDRUXK"
+      },
+      {
+        "confidence": 1,
+        "text": "70552007"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/11-gaussian-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 1,
+        "text": "70552007"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/11-secure-2_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "TIHOPO BELCEL"
+      }
+    ],
+    "revision": 3
+  },
+  {
+    "file": "evidence/ai/outputs/11-secure-3_0-dpir.png",
+    "observations": [
+      {
+        "confidence": 0.30000001192092896,
+        "text": "InmatoRuo"
+      }
+    ],
+    "revision": 3
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "status": "run",
+  "model": "DPIR with DRUNet grayscale",
+  "result_file": "results.json",
+  "summary": [
+    {
+      "method": "clear",
+      "assumed_gaussian_sigma": null,
+      "samples": 12,
+      "exact_ocr_before": 12,
+      "exact_ocr_after": null,
+      "mean_roi_psnr_before_db": null,
+      "mean_roi_psnr_after_db": null
+    },
+    {
+      "method": "gaussian",
+      "assumed_gaussian_sigma": 2.0,
+      "samples": 12,
+      "exact_ocr_before": 12,
+      "exact_ocr_after": 12,
+      "mean_roi_psnr_before_db": 16.24243468673497,
+      "mean_roi_psnr_after_db": 26.75808883984656
+    },
+    {
+      "method": "gaussian",
+      "assumed_gaussian_sigma": 3.0,
+      "samples": 12,
+      "exact_ocr_before": 9,
+      "exact_ocr_after": 12,
+      "mean_roi_psnr_before_db": 14.85430066357731,
+      "mean_roi_psnr_after_db": 20.016882215474013
+    },
+    {
+      "method": "secure",
+      "assumed_gaussian_sigma": 2.0,
+      "samples": 12,
+      "exact_ocr_before": 0,
+      "exact_ocr_after": 0,
+      "mean_roi_psnr_before_db": 5.918410180819816,
+      "mean_roi_psnr_after_db": 3.479026679944488
+    },
+    {
+      "method": "secure",
+      "assumed_gaussian_sigma": 3.0,
+      "samples": 12,
+      "exact_ocr_before": 0,
+      "exact_ocr_after": 0,
+      "mean_roi_psnr_before_db": 5.918410180819816,
+      "mean_roi_psnr_after_db": 2.9492799420580162
+    }
+  ]
+}

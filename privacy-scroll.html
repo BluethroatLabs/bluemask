@@ -1,0 +1,50 @@
+<article class="paper-scroll privacy-scroll" aria-labelledby="privacy-scroll-title" aria-describedby="privacy-scroll-intro">
+  <header class="scroll-header">
+    <h2 id="privacy-scroll-title">About BlueMask</h2>
+    <p id="privacy-scroll-intro">BlueMask hides private details in photos and screenshots. It runs in your browser, without uploading your image.</p>
+    <p><strong>Use secure masking for sensitive data.</strong> It replaces the covered pixels with a solid patch. Cosmetic blur is an appearance effect and may leave recoverable details.</p>
+  </header>
+
+  <ol class="scroll-questions">
+    <li><details><summary>Why isn’t ordinary blur enough?</summary>
+      <p>Blur mixes pixels together. A name can look unreadable while still leaving enough shapes and patterns for software to recover it.</p>
+      <p>Deblurring models such as <a href="https://arxiv.org/abs/2111.09881" target="_blank" rel="noopener noreferrer">Restormer</a> and <a href="https://arxiv.org/abs/2204.04676" target="_blank" rel="noopener noreferrer">NAFNet</a> reconstruct detail from degraded images. They can also produce plausible guesses. A sharp result is not necessarily the original. These are research references, not BlueMask test results.</p>
+    </details></li>
+    <li><details><summary>What is Gaussian blur?</summary>
+      <p>Each pixel becomes a weighted average of its neighbors. Nearby pixels count more, following a bell-shaped pattern called a Gaussian kernel. The mixed values still depend on the original image.</p>
+      <p>A stronger blur is not a guarantee that a secret is gone. See the <a href="https://drafts.csswg.org/filter-effects/#feGaussianBlurElement" target="_blank" rel="noopener noreferrer">Gaussian filter definition</a>.</p>
+    </details></li>
+    <li><details><summary>What makes secure masking different?</summary>
+      <p>It replaces the selected pixels with a fixed, opaque color. The mask’s color does not depend on the hidden image. The export is a flattened PNG, with no separate layer to lift off.</p>
+      <p>For the same mask positions and visible surroundings, changing the hidden pixels produces the same output. Secure masks also take priority wherever they overlap cosmetic blur. Your original file is unchanged.</p>
+    </details></li>
+    <li><details><summary>Does my image leave my device?</summary>
+      <p>This edition reads, edits and saves images locally. It has no image uploads, analytics, accounts or remote AI calls.</p>
+      <p>Opening the hosted website still connects you to its host. For sensitive images, download the offline edition and disconnect before choosing your image.</p>
+    </details></li>
+    <li><details><summary>Why does Paranoia Mode exist?</summary>
+      <p>How do you know Bluethroat Labs isn’t uploading your photo or extracting sensitive details from it? Paranoia Mode lets you check that BlueMask works offline. While your device has no network connection, the page cannot send your photo or its contents to our servers.</p>
+      <p>A webpage cannot turn off your internet connection for you. Disconnect before opening your private image:</p>
+      <ol class="scroll-steps"><li>Download the offline HTML file.</li><li>Turn off Wi-Fi and mobile data; unplug Ethernet.</li><li>Open the file, choose your image, mask and save.</li><li>Review the export and close BlueMask before reconnecting.</li></ol>
+      <p>The browser’s connection indicator is only a hint. Use your device’s network controls to disconnect.</p>
+    </details></li>
+    <li><details><summary>Does working offline prove it is trustworthy?</summary>
+      <p>It proves editing needs no server. It does not prove the code, browser or device is safe.</p>
+      <p>The source and recorded tests are downloadable. File hashes identify the exact build; they do not certify its safety.</p>
+    </details></li>
+    <li><details><summary>What about filenames and hidden metadata?</summary>
+      <p>BlueMask creates a new PNG named <code>bluemask.png</code>. It does not copy the original filename, camera details or GPS metadata. Ordinary image properties, such as dimensions, remain.</p>
+      <p>Anything visible in the picture still needs to be covered.</p>
+    </details></li>
+    <li><details><summary>Can someone still identify what I hid?</summary>
+      <p>Yes, from context. A box’s width can suggest a name’s length. Nearby text, logos, reflections and timestamps can give you away.</p>
+      <p>Cover the full detail with room around it. A whole line can reveal less than a tightly fitted word. Avoid sharing differently masked versions of the same image.</p>
+    </details></li>
+    <li><details><summary>What do the recovery tests establish?</summary>
+      <p>The published test uses twelve synthetic codes. DPIR recovered all twelve from the Gaussian blur control and none from secure masks. All twelve secure inputs were identical, so they were not independent challenges.</p>
+      <p>DarkIR failed the ordinary-blur control; its failure on masks is not a useful resistance result. These tests do not establish protection against every model, face recognition or guesses from context. Settings, originals and outputs are available with the results.</p>
+    </details></li>
+  </ol>
+
+  <footer class="scroll-footer"><p>BlueMask by Bluethroat Labs</p><p class="scroll-reference-note">Everything here works offline. Research links need internet.</p></footer>
+</article>

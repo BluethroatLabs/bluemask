@@ -1,0 +1,1238 @@
+{
+  "schema_version": 1,
+  "status": "run",
+  "synthetic_only": true,
+  "run_at_utc": "2026-09-06T14:21:54.346785+00:00",
+  "model": {
+    "name": "DPIR with DRUNet grayscale",
+    "year": 2021,
+    "classification": "Established released baseline; not a current frontier claim",
+    "source": {
+      "repo": "https://github.com/cszn/DPIR",
+      "commit": "15bca3fcc1f3cc51a1f99ccf027691e278c19354",
+      "commit_date": "2022-11-21T14:43:44Z"
+    },
+    "weights_url": "https://github.com/cszn/KAIR/releases/download/v1.0/drunet_gray.pth",
+    "weights_sha256": "e27fb29456732c604c8ee3ac3e92ecadd2a7a4e36a8be675e92ebbf93a240de4",
+    "weights_bytes": 130569961,
+    "iterations": 8,
+    "x8_augmentation": false,
+    "regularization_noise_level": 0.00392156862745098,
+    "model_sigma_start": 49,
+    "model_sigma_end": 1
+  },
+  "environment": {
+    "platform": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+    "python": "3.14.7",
+    "torch": "2.14.0",
+    "numpy": "2.5.2",
+    "device": "mps",
+    "ocr": "Apple Vision VNRecognizeTextRequest, accurate, en-US, no language correction",
+    "ocr_revision": [
+      3
+    ]
+  },
+  "fixture_manifest_sha256": "0919aefbf6e7fa4220d9078bc5058de4245406ac561b982c3edf0793aedba5d2",
+  "fixture_count": 12,
+  "unique_inference_inputs": 26,
+  "secure_unique_png_hashes": 1,
+  "wall_seconds": 5.864,
+  "summary": [
+    {
+      "method": "clear",
+      "assumed_gaussian_sigma": null,
+      "samples": 12,
+      "exact_ocr_before": 12,
+      "exact_ocr_after": null,
+      "mean_roi_psnr_before_db": null,
+      "mean_roi_psnr_after_db": null
+    },
+    {
+      "method": "gaussian",
+      "assumed_gaussian_sigma": 2.0,
+      "samples": 12,
+      "exact_ocr_before": 12,
+      "exact_ocr_after": 12,
+      "mean_roi_psnr_before_db": 16.24243468673497,
+      "mean_roi_psnr_after_db": 26.75808883984656
+    },
+    {
+      "method": "gaussian",
+      "assumed_gaussian_sigma": 3.0,
+      "samples": 12,
+      "exact_ocr_before": 9,
+      "exact_ocr_after": 12,
+      "mean_roi_psnr_before_db": 14.85430066357731,
+      "mean_roi_psnr_after_db": 20.016882215474013
+    },
+    {
+      "method": "secure",
+      "assumed_gaussian_sigma": 2.0,
+      "samples": 12,
+      "exact_ocr_before": 0,
+      "exact_ocr_after": 0,
+      "mean_roi_psnr_before_db": 5.918410180819816,
+      "mean_roi_psnr_after_db": 3.479026679944488
+    },
+    {
+      "method": "secure",
+      "assumed_gaussian_sigma": 3.0,
+      "samples": 12,
+      "exact_ocr_before": 0,
+      "exact_ocr_after": 0,
+      "mean_roi_psnr_before_db": 5.918410180819816,
+      "mean_roi_psnr_after_db": 2.9492799420580162
+    }
+  ],
+  "rows": [
+    {
+      "id": "00",
+      "method": "clear",
+      "secret": "54791098",
+      "input": "evidence/ai/fixtures/00-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "54791098"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "00",
+      "method": "gaussian",
+      "secret": "54791098",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/00-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/00-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.208921960569366,
+      "output_roi_psnr_db": 26.74947579486604,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.3984,
+      "input_ocr_text": [
+        "54791098"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENORUXK",
+        "54791098"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "00",
+      "method": "secure",
+      "secret": "54791098",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/00-secure.png",
+      "output": "evidence/ai/outputs/00-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.9207672338464015,
+      "output_roi_psnr_db": 3.4780133260138157,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1188,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "00",
+      "method": "gaussian",
+      "secret": "54791098",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/00-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/00-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.818775531024517,
+      "output_roi_psnr_db": 20.08421913434454,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1151,
+      "input_ocr_text": [
+        "54791098"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "54791098"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "00",
+      "method": "secure",
+      "secret": "54791098",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/00-secure.png",
+      "output": "evidence/ai/outputs/00-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.9207672338464015,
+      "output_roi_psnr_db": 2.94812952593794,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1184,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "01",
+      "method": "clear",
+      "secret": "49900344",
+      "input": "evidence/ai/fixtures/01-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "49900344"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "01",
+      "method": "gaussian",
+      "secret": "49900344",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/01-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/01-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.03389801397117,
+      "output_roi_psnr_db": 26.329762070391723,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1174,
+      "input_ocr_text": [
+        "49900344"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENORUXK",
+        "49900344"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "01",
+      "method": "secure",
+      "secret": "49900344",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/01-secure.png",
+      "output": "evidence/ai/outputs/01-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.945250211702195,
+      "output_roi_psnr_db": 3.4974176890960336,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0008,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "01",
+      "method": "gaussian",
+      "secret": "49900344",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/01-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/01-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.68973897118305,
+      "output_roi_psnr_db": 19.514677544987226,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1159,
+      "input_ocr_text": [
+        "49900344"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "49900344"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "01",
+      "method": "secure",
+      "secret": "49900344",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/01-secure.png",
+      "output": "evidence/ai/outputs/01-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.945250211702195,
+      "output_roi_psnr_db": 2.9705667950814845,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0008,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "02",
+      "method": "clear",
+      "secret": "21103366",
+      "input": "evidence/ai/fixtures/02-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "21103366"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "02",
+      "method": "gaussian",
+      "secret": "21103366",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/02-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/02-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.35069850039642,
+      "output_roi_psnr_db": 26.767641737877458,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1207,
+      "input_ocr_text": [
+        "21103366"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENDRUXK",
+        "21103366"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "02",
+      "method": "secure",
+      "secret": "21103366",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/02-secure.png",
+      "output": "evidence/ai/outputs/02-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.907341358233618,
+      "output_roi_psnr_db": 3.479561838033327,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0006,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "02",
+      "method": "gaussian",
+      "secret": "21103366",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/02-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/02-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.957967976311991,
+      "output_roi_psnr_db": 20.078037270311825,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1349,
+      "input_ocr_text": [
+        "21103366"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "21103366"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "02",
+      "method": "secure",
+      "secret": "21103366",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/02-secure.png",
+      "output": "evidence/ai/outputs/02-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.907341358233618,
+      "output_roi_psnr_db": 2.960948403490406,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0022,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "03",
+      "method": "clear",
+      "secret": "21571740",
+      "input": "evidence/ai/fixtures/03-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "21571740"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "03",
+      "method": "gaussian",
+      "secret": "21571740",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/03-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/03-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.62965413712969,
+      "output_roi_psnr_db": 27.36785786620665,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1225,
+      "input_ocr_text": [
+        "21571740"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENDRUXK",
+        "21571740"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "03",
+      "method": "secure",
+      "secret": "21571740",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/03-secure.png",
+      "output": "evidence/ai/outputs/03-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.863942560753303,
+      "output_roi_psnr_db": 3.441751127405193,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0026,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "03",
+      "method": "gaussian",
+      "secret": "21571740",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/03-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/03-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 15.251208970634602,
+      "output_roi_psnr_db": 20.656762568165767,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1165,
+      "input_ocr_text": [
+        "21571740"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "21571740"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "03",
+      "method": "secure",
+      "secret": "21571740",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/03-secure.png",
+      "output": "evidence/ai/outputs/03-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.863942560753303,
+      "output_roi_psnr_db": 2.9044873915426477,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0008,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "04",
+      "method": "clear",
+      "secret": "87625328",
+      "input": "evidence/ai/fixtures/04-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "87625328"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "04",
+      "method": "gaussian",
+      "secret": "87625328",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/04-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/04-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.27904938882412,
+      "output_roi_psnr_db": 27.124199188822953,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1156,
+      "input_ocr_text": [
+        "87625328"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENDFUXK",
+        "87625328"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "04",
+      "method": "secure",
+      "secret": "87625328",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/04-secure.png",
+      "output": "evidence/ai/outputs/04-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.913361207150474,
+      "output_roi_psnr_db": 3.4753885328498013,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0007,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "04",
+      "method": "gaussian",
+      "secret": "87625328",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/04-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/04-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.869718624806179,
+      "output_roi_psnr_db": 20.007249533339227,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1207,
+      "input_ocr_text": [
+        "87625328"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "87625328"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "04",
+      "method": "secure",
+      "secret": "87625328",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/04-secure.png",
+      "output": "evidence/ai/outputs/04-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.913361207150474,
+      "output_roi_psnr_db": 2.9431132656075096,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0012,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "05",
+      "method": "clear",
+      "secret": "30008867",
+      "input": "evidence/ai/fixtures/05-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "30008867"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "05",
+      "method": "gaussian",
+      "secret": "30008867",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/05-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/05-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 15.835150870303101,
+      "output_roi_psnr_db": 25.830710022333797,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1221,
+      "input_ocr_text": [
+        "30008867"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENDRUXK",
+        "30008867"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "05",
+      "method": "secure",
+      "secret": "30008867",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/05-secure.png",
+      "output": "evidence/ai/outputs/05-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.976751651455071,
+      "output_roi_psnr_db": 3.5075746681669617,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0007,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "05",
+      "method": "gaussian",
+      "secret": "30008867",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/05-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/05-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.449547597635316,
+      "output_roi_psnr_db": 19.781933914412413,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1141,
+      "input_ocr_text": [
+        "30088867"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "30008867"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "05",
+      "method": "secure",
+      "secret": "30008867",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/05-secure.png",
+      "output": "evidence/ai/outputs/05-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.976751651455071,
+      "output_roi_psnr_db": 2.979400886546756,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0006,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "06",
+      "method": "clear",
+      "secret": "80764230",
+      "input": "evidence/ai/fixtures/06-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "80764230"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "06",
+      "method": "gaussian",
+      "secret": "80764230",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/06-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/06-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.102257584156458,
+      "output_roi_psnr_db": 26.68007214352885,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1217,
+      "input_ocr_text": [
+        "80764230"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENDRUXK",
+        "80764230"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "06",
+      "method": "secure",
+      "secret": "80764230",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/06-secure.png",
+      "output": "evidence/ai/outputs/06-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.938604036479754,
+      "output_roi_psnr_db": 3.486502681908771,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0007,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "06",
+      "method": "gaussian",
+      "secret": "80764230",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/06-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/06-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.7194928619955,
+      "output_roi_psnr_db": 19.809972438213194,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1167,
+      "input_ocr_text": [
+        "88764230"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "80764230"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "06",
+      "method": "secure",
+      "secret": "80764230",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/06-secure.png",
+      "output": "evidence/ai/outputs/06-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.938604036479754,
+      "output_roi_psnr_db": 2.95192019886065,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0008,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "07",
+      "method": "clear",
+      "secret": "36894692",
+      "input": "evidence/ai/fixtures/07-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "36894692"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "07",
+      "method": "gaussian",
+      "secret": "36894692",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/07-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/07-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.09417440189849,
+      "output_roi_psnr_db": 26.700101732734794,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1184,
+      "input_ocr_text": [
+        "36894692"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENORISKI",
+        "36894692"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "07",
+      "method": "secure",
+      "secret": "36894692",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/07-secure.png",
+      "output": "evidence/ai/outputs/07-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.938679633595548,
+      "output_roi_psnr_db": 3.4993585479735243,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0008,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "07",
+      "method": "gaussian",
+      "secret": "36894692",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/07-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/07-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.68901737760407,
+      "output_roi_psnr_db": 19.72071405989658,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1206,
+      "input_ocr_text": [
+        "36894692"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "36894692"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "07",
+      "method": "secure",
+      "secret": "36894692",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/07-secure.png",
+      "output": "evidence/ai/outputs/07-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.938679633595548,
+      "output_roi_psnr_db": 2.9841536018394432,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0007,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "08",
+      "method": "clear",
+      "secret": "11278918",
+      "input": "evidence/ai/fixtures/08-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "11278918"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "08",
+      "method": "gaussian",
+      "secret": "11278918",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/08-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/08-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.48986163070924,
+      "output_roi_psnr_db": 27.33152298685367,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1212,
+      "input_ocr_text": [
+        "11278918"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENDRUXK",
+        "11278918"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "08",
+      "method": "secure",
+      "secret": "11278918",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/08-secure.png",
+      "output": "evidence/ai/outputs/08-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.88669219052775,
+      "output_roi_psnr_db": 3.4692785497848244,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0007,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "08",
+      "method": "gaussian",
+      "secret": "11278918",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/08-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/08-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 15.068799968650762,
+      "output_roi_psnr_db": 20.339767289011924,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1889,
+      "input_ocr_text": [
+        "11278918"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "11278918"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "08",
+      "method": "secure",
+      "secret": "11278918",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/08-secure.png",
+      "output": "evidence/ai/outputs/08-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.88669219052775,
+      "output_roi_psnr_db": 2.9413133744909437,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.001,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "09",
+      "method": "clear",
+      "secret": "84134201",
+      "input": "evidence/ai/fixtures/09-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "84134201"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "09",
+      "method": "gaussian",
+      "secret": "84134201",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/09-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/09-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.351159313856012,
+      "output_roi_psnr_db": 27.03642372088214,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1179,
+      "input_ocr_text": [
+        "84134201"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENOMURK",
+        "84134201"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "09",
+      "method": "secure",
+      "secret": "84134201",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/09-secure.png",
+      "output": "evidence/ai/outputs/09-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.9010820102736,
+      "output_roi_psnr_db": 3.473531692675504,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0009,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "09",
+      "method": "gaussian",
+      "secret": "84134201",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/09-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/09-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.988179435911402,
+      "output_roi_psnr_db": 20.017873848176713,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1142,
+      "input_ocr_text": [
+        "84134201"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "84134201"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "09",
+      "method": "secure",
+      "secret": "84134201",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/09-secure.png",
+      "output": "evidence/ai/outputs/09-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.9010820102736,
+      "output_roi_psnr_db": 2.9460895855002796,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0007,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "10",
+      "method": "clear",
+      "secret": "73653269",
+      "input": "evidence/ai/fixtures/10-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "73653269"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "10",
+      "method": "gaussian",
+      "secret": "73653269",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/10-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/10-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.37468580894651,
+      "output_roi_psnr_db": 26.870338126915065,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1129,
+      "input_ocr_text": [
+        "73653269"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENDFUXK",
+        "73653269"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "10",
+      "method": "secure",
+      "secret": "73653269",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/10-secure.png",
+      "output": "evidence/ai/outputs/10-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.9053546613601124,
+      "output_roi_psnr_db": 3.4732911854514246,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0008,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "10",
+      "method": "gaussian",
+      "secret": "73653269",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/10-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/10-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.970322704509814,
+      "output_roi_psnr_db": 20.10416321825598,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1153,
+      "input_ocr_text": [
+        "73653269"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "73653269"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "10",
+      "method": "secure",
+      "secret": "73653269",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/10-secure.png",
+      "output": "evidence/ai/outputs/10-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.9053546613601124,
+      "output_roi_psnr_db": 2.947523401151492,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0006,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "11",
+      "method": "clear",
+      "secret": "70552007",
+      "input": "evidence/ai/fixtures/11-original.png",
+      "output": null,
+      "input_roi_psnr_db": null,
+      "output_roi_psnr_db": null,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "70552007"
+      ],
+      "input_exact_secret_match": true
+    },
+    {
+      "id": "11",
+      "method": "gaussian",
+      "secret": "70552007",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/11-gaussian-2_0.png",
+      "output": "evidence/ai/outputs/11-gaussian-2_0-dpir.png",
+      "input_roi_psnr_db": 16.15970463005905,
+      "output_roi_psnr_db": 26.30896068674567,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1153,
+      "input_ocr_text": [
+        "70552007"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SINTHETIC BENDRUXK",
+        "70552007"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "11",
+      "method": "secure",
+      "secret": "70552007",
+      "assumed_gaussian_sigma": 2.0,
+      "input": "evidence/ai/fixtures/11-secure.png",
+      "output": "evidence/ai/outputs/11-secure-2_0-dpir.png",
+      "input_roi_psnr_db": 5.923095414459969,
+      "output_roi_psnr_db": 3.4666503199746854,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0011,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "TIHOPO BELCEL"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "11",
+      "method": "gaussian",
+      "secret": "70552007",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/11-gaussian-3_0.png",
+      "output": "evidence/ai/outputs/11-gaussian-3_0-dpir.png",
+      "input_roi_psnr_db": 14.778837942660527,
+      "output_roi_psnr_db": 20.087215766572783,
+      "inference_reused_identical_input": false,
+      "wall_seconds": 0.1164,
+      "input_ocr_text": [
+        "78552087"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "70552007"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "11",
+      "method": "secure",
+      "secret": "70552007",
+      "assumed_gaussian_sigma": 3.0,
+      "input": "evidence/ai/fixtures/11-secure.png",
+      "output": "evidence/ai/outputs/11-secure-3_0-dpir.png",
+      "input_roi_psnr_db": 5.923095414459969,
+      "output_roi_psnr_db": 2.9137128746466425,
+      "inference_reused_identical_input": true,
+      "wall_seconds": 0.0008,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "InmatoRuo"
+      ],
+      "output_exact_secret_match": false
+    }
+  ],
+  "limitations": [
+    "Twelve synthetic 8-digit tokens, one font and fixed geometry; no faces or real documents.",
+    "Gaussian controls are full-image synthetic known-kernel blur, not BlueMask cosmetic mode.",
+    "Secure images come from the product canvas renderer; generation provenance is recorded separately.",
+    "A deblurring model is not an inpainting model, context-inference model or exhaustive privacy adversary.",
+    "The same masked image is shared by twelve different originals; cached identical inference is disclosed.",
+    "Apple Vision OCR can miss readable characters. Exact-match failure is not proof of no leakage.",
+    "No statistical population guarantee, all-model guarantee, anonymity guarantee or AI-proof claim."
+  ]
+}

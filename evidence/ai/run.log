@@ -1,0 +1,95 @@
+00 gaussian sigma=2.0 reused=False
+00 secure sigma=2.0 reused=False
+00 gaussian sigma=3.0 reused=False
+00 secure sigma=3.0 reused=False
+01 gaussian sigma=2.0 reused=False
+01 secure sigma=2.0 reused=True
+01 gaussian sigma=3.0 reused=False
+01 secure sigma=3.0 reused=True
+02 gaussian sigma=2.0 reused=False
+02 secure sigma=2.0 reused=True
+02 gaussian sigma=3.0 reused=False
+02 secure sigma=3.0 reused=True
+03 gaussian sigma=2.0 reused=False
+03 secure sigma=2.0 reused=True
+03 gaussian sigma=3.0 reused=False
+03 secure sigma=3.0 reused=True
+04 gaussian sigma=2.0 reused=False
+04 secure sigma=2.0 reused=True
+04 gaussian sigma=3.0 reused=False
+04 secure sigma=3.0 reused=True
+05 gaussian sigma=2.0 reused=False
+05 secure sigma=2.0 reused=True
+05 gaussian sigma=3.0 reused=False
+05 secure sigma=3.0 reused=True
+06 gaussian sigma=2.0 reused=False
+06 secure sigma=2.0 reused=True
+06 gaussian sigma=3.0 reused=False
+06 secure sigma=3.0 reused=True
+07 gaussian sigma=2.0 reused=False
+07 secure sigma=2.0 reused=True
+07 gaussian sigma=3.0 reused=False
+07 secure sigma=3.0 reused=True
+08 gaussian sigma=2.0 reused=False
+08 secure sigma=2.0 reused=True
+08 gaussian sigma=3.0 reused=False
+08 secure sigma=3.0 reused=True
+09 gaussian sigma=2.0 reused=False
+09 secure sigma=2.0 reused=True
+09 gaussian sigma=3.0 reused=False
+09 secure sigma=3.0 reused=True
+10 gaussian sigma=2.0 reused=False
+10 secure sigma=2.0 reused=True
+10 gaussian sigma=3.0 reused=False
+10 secure sigma=3.0 reused=True
+11 gaussian sigma=2.0 reused=False
+11 secure sigma=2.0 reused=True
+11 gaussian sigma=3.0 reused=False
+11 secure sigma=3.0 reused=True
+[
+  {
+    "method": "clear",
+    "assumed_gaussian_sigma": null,
+    "samples": 12,
+    "exact_ocr_before": 12,
+    "exact_ocr_after": null,
+    "mean_roi_psnr_before_db": null,
+    "mean_roi_psnr_after_db": null
+  },
+  {
+    "method": "gaussian",
+    "assumed_gaussian_sigma": 2.0,
+    "samples": 12,
+    "exact_ocr_before": 12,
+    "exact_ocr_after": 12,
+    "mean_roi_psnr_before_db": 16.24243468673497,
+    "mean_roi_psnr_after_db": 26.75808883984656
+  },
+  {
+    "method": "gaussian",
+    "assumed_gaussian_sigma": 3.0,
+    "samples": 12,
+    "exact_ocr_before": 9,
+    "exact_ocr_after": 12,
+    "mean_roi_psnr_before_db": 14.85430066357731,
+    "mean_roi_psnr_after_db": 20.016882215474013
+  },
+  {
+    "method": "secure",
+    "assumed_gaussian_sigma": 2.0,
+    "samples": 12,
+    "exact_ocr_before": 0,
+    "exact_ocr_after": 0,
+    "mean_roi_psnr_before_db": 5.918410180819816,
+    "mean_roi_psnr_after_db": 3.479026679944488
+  },
+  {
+    "method": "secure",
+    "assumed_gaussian_sigma": 3.0,
+    "samples": 12,
+    "exact_ocr_before": 0,
+    "exact_ocr_after": 0,
+    "mean_roi_psnr_before_db": 5.918410180819816,
+    "mean_roi_psnr_after_db": 2.9492799420580162
+  }
+]

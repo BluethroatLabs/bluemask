@@ -1,0 +1,94 @@
+{
+  "tested_at": "2026-09-06T21:43:11.073Z",
+  "html_sha256": "f0e5578863108ef8f9bfd6c6c115b4ba2b6447a2af7d38a449ef9d1c300ec8db",
+  "checks": [
+    {
+      "name": "Real mouse drag creates the selected image-space mask",
+      "pass": true
+    },
+    {
+      "name": "Pointer indicates moving, corner resizing and drawing automatically",
+      "pass": true
+    },
+    {
+      "name": "Real mouse drag moves a mask immediately after drawing",
+      "pass": true
+    },
+    {
+      "name": "Corner drag resizes without changing tools",
+      "pass": true
+    },
+    {
+      "name": "Undo restores geometry before resizing",
+      "pass": true
+    },
+    {
+      "name": "Undo restores geometry before moving",
+      "pass": true
+    },
+    {
+      "name": "Dragging empty space creates another mask automatically",
+      "pass": true
+    },
+    {
+      "name": "Dragging an unselected mask selects and moves it",
+      "pass": true
+    },
+    {
+      "name": "Draw can create an overlapping mask and returns to direct editing",
+      "pass": true
+    },
+    {
+      "name": "Direct movement selects the topmost overlapping mask",
+      "pass": true
+    },
+    {
+      "name": "Moving preserves secure masking when new-region method is cosmetic",
+      "pass": true
+    },
+    {
+      "name": "Download is disabled during an unfinished drag",
+      "pass": true
+    },
+    {
+      "name": "Escape cancels a drag without committing geometry",
+      "pass": true
+    },
+    {
+      "name": "All sidebar controls are inert while export is encoding",
+      "pass": true
+    },
+    {
+      "name": "Pending export ignores geometry/history mutations",
+      "pass": true
+    },
+    {
+      "name": "Rendering failure releases busy state and leaves reset available",
+      "pass": true
+    },
+    {
+      "name": "Clear session removes visible source, regions and history",
+      "pass": true
+    },
+    {
+      "name": "Real touch drag creates a mask on a phone viewport",
+      "pass": true
+    },
+    {
+      "name": "Touch moves a mask directly after drawing",
+      "pass": true
+    },
+    {
+      "name": "Touch resizes a selected corner without a mode change",
+      "pass": true
+    },
+    {
+      "name": "Touch-edited mask exports opaque replacement at every covered pixel",
+      "pass": true,
+      "detail": {
+        "bad": 0,
+        "pixels": 11664
+      }
+    }
+  ]
+}

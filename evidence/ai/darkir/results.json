@@ -1,0 +1,925 @@
+{
+  "schema_version": 1,
+  "status": "run",
+  "synthetic_only": true,
+  "run_at_utc": "2026-09-06T15:23:53.315533+00:00",
+  "model": {
+    "name": "DarkIR-m / DarkIR_384",
+    "conference": "CVPR 2025",
+    "year": 2025,
+    "training_domain": "Low-light photographic restoration, LOLBlur configuration",
+    "distribution_mismatch": "White-background synthetic Gaussian-blurred text is outside its advertised low-light photographic domain.",
+    "parameters": 3321638,
+    "provenance": {
+      "github_repo": "https://github.com/cidautai/DarkIR",
+      "github_commit": "0910291157ad04f210481a002cf6bb480f6a7f18",
+      "weights_repo": "https://huggingface.co/Cidaut/DarkIR",
+      "weights_commit": "8a73ebf271c513dfda9d1df444762d8aa0b42138",
+      "weights_url": "https://huggingface.co/Cidaut/DarkIR/resolve/8a73ebf271c513dfda9d1df444762d8aa0b42138/DarkIR_384.pt",
+      "weights_sha256": "61eee7d5cfb593d408fba4c716874449b324ed1f49cbff97c2a25ce2fcbe4fde",
+      "weights_bytes": 13397397,
+      "weights_license_from_model_card": "CC-BY-4.0",
+      "code_license": "MIT"
+    },
+    "configuration": {
+      "width": 32,
+      "middle_blk_num_enc": 2,
+      "middle_blk_num_dec": 2,
+      "enc_blk_nums": [
+        1,
+        2,
+        3
+      ],
+      "dec_blk_nums": [
+        3,
+        1,
+        1
+      ],
+      "dilations": [
+        1,
+        4,
+        9
+      ],
+      "extra_depth_wise": true
+    },
+    "architecture_modified": false,
+    "kernel_supplied": false
+  },
+  "environment": {
+    "platform": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+    "python": "3.14.7",
+    "torch": "2.14.0",
+    "numpy": "2.5.2",
+    "device": "cpu",
+    "ocr": "Apple Vision accurate en-US, language correction off",
+    "ocr_revision": [
+      3
+    ]
+  },
+  "fixture_manifest_sha256": "0919aefbf6e7fa4220d9078bc5058de4245406ac561b982c3edf0793aedba5d2",
+  "wall_seconds": 8.556,
+  "unique_inference_inputs": 37,
+  "summary": [
+    {
+      "method": "clear",
+      "gaussian_sigma": null,
+      "samples": 12,
+      "exact_ocr_before": 12,
+      "exact_ocr_after": 12,
+      "new_exact_recoveries": 0,
+      "lost_exact_recoveries": 0
+    },
+    {
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "samples": 12,
+      "exact_ocr_before": 12,
+      "exact_ocr_after": 6,
+      "new_exact_recoveries": 0,
+      "lost_exact_recoveries": 6
+    },
+    {
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "samples": 12,
+      "exact_ocr_before": 9,
+      "exact_ocr_after": 0,
+      "new_exact_recoveries": 0,
+      "lost_exact_recoveries": 9
+    },
+    {
+      "method": "secure",
+      "gaussian_sigma": null,
+      "samples": 12,
+      "exact_ocr_before": 0,
+      "exact_ocr_after": 0,
+      "new_exact_recoveries": 0,
+      "lost_exact_recoveries": 0
+    }
+  ],
+  "rows": [
+    {
+      "id": "00",
+      "secret": "54791098",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/00-original.png",
+      "output": "evidence/ai/darkir/outputs/00-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "54791098"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "54791098"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "00",
+      "secret": "54791098",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/00-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/00-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "54791098"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "34791098"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "00",
+      "secret": "54791098",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/00-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/00-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "54791098"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "00",
+      "secret": "54791098",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/00-secure.png",
+      "output": "evidence/ai/darkir/outputs/00-secure-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "01",
+      "secret": "49900344",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/01-original.png",
+      "output": "evidence/ai/darkir/outputs/01-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "49900344"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "49900344"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "01",
+      "secret": "49900344",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/01-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/01-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "49900344"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "PP800602"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "01",
+      "secret": "49900344",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/01-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/01-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "49900344"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "01",
+      "secret": "49900344",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/01-secure.png",
+      "output": "evidence/ai/darkir/outputs/01-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "02",
+      "secret": "21103366",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/02-original.png",
+      "output": "evidence/ai/darkir/outputs/02-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "21103366"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "21103366"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "02",
+      "secret": "21103366",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/02-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/02-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "21103366"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "21103366"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "02",
+      "secret": "21103366",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/02-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/02-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "21103366"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "02",
+      "secret": "21103366",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/02-secure.png",
+      "output": "evidence/ai/darkir/outputs/02-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "03",
+      "secret": "21571740",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/03-original.png",
+      "output": "evidence/ai/darkir/outputs/03-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "21571740"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "21571740"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "03",
+      "secret": "21571740",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/03-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/03-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "21571740"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "21571740"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "03",
+      "secret": "21571740",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/03-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/03-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "21571740"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "03",
+      "secret": "21571740",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/03-secure.png",
+      "output": "evidence/ai/darkir/outputs/03-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "04",
+      "secret": "87625328",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/04-original.png",
+      "output": "evidence/ai/darkir/outputs/04-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "87625328"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "87625328"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "04",
+      "secret": "87625328",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/04-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/04-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "87625328"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "87625328"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "04",
+      "secret": "87625328",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/04-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/04-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "87625328"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "04",
+      "secret": "87625328",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/04-secure.png",
+      "output": "evidence/ai/darkir/outputs/04-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "05",
+      "secret": "30008867",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/05-original.png",
+      "output": "evidence/ai/darkir/outputs/05-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "30008867"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "30008867"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "05",
+      "secret": "30008867",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/05-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/05-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "30008867"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "2989000\u20ac"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "05",
+      "secret": "30008867",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/05-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/05-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "30088867"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "05",
+      "secret": "30008867",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/05-secure.png",
+      "output": "evidence/ai/darkir/outputs/05-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "06",
+      "secret": "80764230",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/06-original.png",
+      "output": "evidence/ai/darkir/outputs/06-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "80764230"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "80764230"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "06",
+      "secret": "80764230",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/06-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/06-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "80764230"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "60764230"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "06",
+      "secret": "80764230",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/06-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/06-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "88764230"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "06",
+      "secret": "80764230",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/06-secure.png",
+      "output": "evidence/ai/darkir/outputs/06-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "07",
+      "secret": "36894692",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/07-original.png",
+      "output": "evidence/ai/darkir/outputs/07-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "36894692"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "36894692"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "07",
+      "secret": "36894692",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/07-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/07-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "36894692"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "36594692"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "07",
+      "secret": "36894692",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/07-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/07-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "36894692"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "07",
+      "secret": "36894692",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/07-secure.png",
+      "output": "evidence/ai/darkir/outputs/07-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "08",
+      "secret": "11278918",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/08-original.png",
+      "output": "evidence/ai/darkir/outputs/08-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "11278918"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "11278918"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "08",
+      "secret": "11278918",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/08-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/08-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "11278918"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "11276918"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "08",
+      "secret": "11278918",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/08-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/08-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "11278918"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "08",
+      "secret": "11278918",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/08-secure.png",
+      "output": "evidence/ai/darkir/outputs/08-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "09",
+      "secret": "84134201",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/09-original.png",
+      "output": "evidence/ai/darkir/outputs/09-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "84134201"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "84134201"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "09",
+      "secret": "84134201",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/09-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/09-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "84134201"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "84134201"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "09",
+      "secret": "84134201",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/09-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/09-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "84134201"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "09",
+      "secret": "84134201",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/09-secure.png",
+      "output": "evidence/ai/darkir/outputs/09-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "10",
+      "secret": "73653269",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/10-original.png",
+      "output": "evidence/ai/darkir/outputs/10-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "73653269"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "73653269"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "10",
+      "secret": "73653269",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/10-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/10-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "73653269"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "73653269"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "10",
+      "secret": "73653269",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/10-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/10-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "73653269"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "10",
+      "secret": "73653269",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/10-secure.png",
+      "output": "evidence/ai/darkir/outputs/10-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "11",
+      "secret": "70552007",
+      "method": "clear",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/11-original.png",
+      "output": "evidence/ai/darkir/outputs/11-clear-0-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "70552007"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK",
+        "70552007"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "11",
+      "secret": "70552007",
+      "method": "gaussian",
+      "gaussian_sigma": 2,
+      "input": "evidence/ai/fixtures/11-gaussian-2_0.png",
+      "output": "evidence/ai/darkir/outputs/11-gaussian-2-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "70552007"
+      ],
+      "input_exact_secret_match": true,
+      "output_ocr_text": [
+        "70552007"
+      ],
+      "output_exact_secret_match": true
+    },
+    {
+      "id": "11",
+      "secret": "70552007",
+      "method": "gaussian",
+      "gaussian_sigma": 3,
+      "input": "evidence/ai/fixtures/11-gaussian-3_0.png",
+      "output": "evidence/ai/darkir/outputs/11-gaussian-3-darkir.png",
+      "inference_reused_identical_input": false,
+      "input_ocr_text": [
+        "78552087"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [],
+      "output_exact_secret_match": false
+    },
+    {
+      "id": "11",
+      "secret": "70552007",
+      "method": "secure",
+      "gaussian_sigma": null,
+      "input": "evidence/ai/fixtures/11-secure.png",
+      "output": "evidence/ai/darkir/outputs/11-secure-0-darkir.png",
+      "inference_reused_identical_input": true,
+      "input_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "input_exact_secret_match": false,
+      "output_ocr_text": [
+        "SYNTHETIC BENCHMARK"
+      ],
+      "output_exact_secret_match": false
+    }
+  ],
+  "limitations": [
+    "This is a recent released model, not an established strongest/current-frontier ranking.",
+    "A model that fails to improve blur controls on these out-of-distribution screenshots cannot substantiate broad resistance claims.",
+    "Twelve synthetic strings, one font, fixed geometry; no people, private images, low-light photo scenes, inpainting or contextual inference.",
+    "All secure images are identical. Only one secure model inference is performed and openly reused.",
+    "OCR exact-match failure does not establish absence of recoverable information for other readers or models."
+  ]
+}

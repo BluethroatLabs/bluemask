@@ -1,0 +1,42 @@
+{
+  "html_sha256": "f0e5578863108ef8f9bfd6c6c115b4ba2b6447a2af7d38a449ef9d1c300ec8db",
+  "passed": true,
+  "cases": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "light": true,
+      "documentFits": true,
+      "sampleFullyVisible": true,
+      "emptyStageHasNoInnerScroll": true
+    },
+    {
+      "width": 768,
+      "height": 1000,
+      "light": false,
+      "documentFits": true,
+      "sampleFullyVisible": true,
+      "emptyStageHasNoInnerScroll": true
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "light": false,
+      "documentFits": true,
+      "sampleFullyVisible": true,
+      "emptyStageHasNoInnerScroll": true
+    },
+    {
+      "width": 280,
+      "height": 812,
+      "light": false,
+      "documentFits": true,
+      "sampleFullyVisible": true,
+      "emptyStageHasNoInnerScroll": true
+    },
+    {
+      "zoom": "200% viewport equivalent",
+      "documentFits": true
+    }
+  ]
+}

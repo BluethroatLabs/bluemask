@@ -1,0 +1,35 @@
+{
+  "reviewed_at_utc": "2026-09-06T15:26:26.131692+00:00",
+  "strongest_current_model_claim_supported": false,
+  "models": [
+    {
+      "name": "DarkIR-m",
+      "year": 2025,
+      "status": "run",
+      "results": "darkir/results.json",
+      "privacy_adversary_qualification": "failed relevant Gaussian blur controls; no strong-resistance claim"
+    },
+    {
+      "name": "Concertormer",
+      "year": 2025,
+      "source_commit": "94269c556277805051644343e3a2cc76c4cd7aaf",
+      "status": "unrun",
+      "blocker": "Official Google Drive distributes a bundled 1.2G checkpoint archive, exceeding remaining download allowance. No individual author-linked checkpoint was available in reviewed README.",
+      "weights_url": "https://drive.google.com/file/d/1NvbGroZm4vVgvWJtmgW-6Fwd97PiukiL/view"
+    },
+    {
+      "name": "EVSSM",
+      "year": 2025,
+      "status": "unrun",
+      "blocker": "Provided environment specifies Linux CUDA PyTorch, causal-conv1d and mamba-ssm; local platform is macOS arm64 without CUDA.",
+      "source": "https://github.com/kkkls/EVSSM/blob/master/environment.yml"
+    },
+    {
+      "name": "EMP",
+      "year": 2026,
+      "status": "excluded",
+      "reason": "Requires event-camera inputs absent from ordinary screenshot; not a comparable screenshot deblurring test.",
+      "source": "https://github.com/Chohoonhee/EMP"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "originals": 12,
+  "distinct_secret_pixel_arrays": 12,
+  "identical_pixels_outside_region": true,
+  "secure_fill_rgb": [
+    110,
+    113,
+    118
+  ],
+  "secure_outputs_identical": true
+}

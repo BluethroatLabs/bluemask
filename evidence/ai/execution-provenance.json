@@ -1,0 +1,16 @@
+{
+  "recorded_at_utc": "2026-09-06T14:22:13.218056+00:00",
+  "command": "sandbox-exec -p '(version 1)(allow default)(deny network*)' .venv/bin/python run_dpir.py > ../evidence/ai/run.log 2>&1",
+  "working_directory": "research",
+  "network_boundary": "macOS sandbox denies network operations to the benchmark process and its child OCR executable; device internet was not disconnected",
+  "file_sha256": {
+    "research/run_dpir.py": "c8db137abd8691746c79de78ceed3c19304a14c2a1b231222eac50271ed0f735",
+    "research/ocr.swift": "b3d9f9646f7418ec8751f5c9500c39c6505d7f4be1799b6309fcbbfc1e2b6844",
+    "research/vision-ocr": "a8bd074982da6bf07f86f86c914db36a81d7d22d439c41db532b970721c1f6aa",
+    "research/dpir/models/network_unet.py": "41c3cc38b2eac3b239aec6a723aefef6c138e5dd8ceb6cd9e18f825248261e91",
+    "research/dpir/models/basicblock.py": "aab51f43fee655fda5c499a0481fffd45bf390bdb8229944262c41e0a900cec1",
+    "research/dpir/utils/utils_pnp.py": "1ac53932f7c47c55b622b88453e2440281d338be988a289240573764dd5421a4",
+    "research/environment-lock.txt": "433fad03af51af223af73fa24ed9fd0241aade73ffadbb4f5a42dd2e4b5da1f1"
+  },
+  "reexecution_note": "One repeat after changing only public OCR path serialization from absolute laptop paths to repository-relative paths; all exact-recovery counts stayed identical."
+}

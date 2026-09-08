@@ -1,0 +1,158 @@
+{
+  "synthetic_only": true,
+  "seed": 20260906,
+  "sample_count": 12,
+  "font_path": "/System/Library/Fonts/Menlo.ttc",
+  "font_sha256": "dc256e0b39c2a6fec947129d421fef41b8b429f58f9b6e5d1b148c87f775c1f6",
+  "font_size": 28,
+  "image_size": [
+    256,
+    96
+  ],
+  "samples": [
+    {
+      "id": "00",
+      "secret": "54791098",
+      "original": "evidence/ai/fixtures/00-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "01",
+      "secret": "49900344",
+      "original": "evidence/ai/fixtures/01-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "02",
+      "secret": "21103366",
+      "original": "evidence/ai/fixtures/02-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "03",
+      "secret": "21571740",
+      "original": "evidence/ai/fixtures/03-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "04",
+      "secret": "87625328",
+      "original": "evidence/ai/fixtures/04-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "05",
+      "secret": "30008867",
+      "original": "evidence/ai/fixtures/05-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "06",
+      "secret": "80764230",
+      "original": "evidence/ai/fixtures/06-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "07",
+      "secret": "36894692",
+      "original": "evidence/ai/fixtures/07-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "08",
+      "secret": "11278918",
+      "original": "evidence/ai/fixtures/08-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "09",
+      "secret": "84134201",
+      "original": "evidence/ai/fixtures/09-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "10",
+      "secret": "73653269",
+      "original": "evidence/ai/fixtures/10-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    },
+    {
+      "id": "11",
+      "secret": "70552007",
+      "original": "evidence/ai/fixtures/11-original.png",
+      "region": {
+        "x": 24,
+        "y": 36,
+        "w": 208,
+        "h": 48,
+        "method": "secure"
+      }
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "tested_at": "2026-09-06T21:43:12.494Z",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/152.0.7977.77",
+    "revision": "@529d9a34b491745086b59458f58a5aae8292adaa",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "jsVersion": "15.2.124.19"
+  },
+  "html_sha256": "f0e5578863108ef8f9bfd6c6c115b4ba2b6447a2af7d38a449ef9d1c300ec8db",
+  "checks": [
+    {
+      "name": "Secure mode is the default; untouched export is blocked",
+      "pass": true
+    },
+    {
+      "name": "Cosmetic blur opens explicit warning without changing mode",
+      "pass": true
+    },
+    {
+      "name": "Recommended secure action receives initial focus",
+      "pass": true
+    },
+    {
+      "name": "Escape cancels without enabling cosmetic blur",
+      "pass": true
+    },
+    {
+      "name": "Cosmetic mode requires explicit confirmation",
+      "pass": true
+    },
+    {
+      "name": "A new image resets to secure mode and blocks untouched export",
+      "pass": true
+    },
+    {
+      "name": "Fit displays the complete image inside the editor viewport",
+      "pass": true
+    },
+    {
+      "name": "Successful image load does not emit a false load error",
+      "pass": true
+    },
+    {
+      "name": "Keyboard-accessible region creation enables export",
+      "pass": true
+    },
+    {
+      "name": "Showing original blocks export",
+      "pass": true
+    },
+    {
+      "name": "Mixed-method export requires an additional explicit warning",
+      "pass": true
+    },
+    {
+      "name": "Recommended export action converts to secure and requires review",
+      "pass": true
+    },
+    {
+      "name": "Export uses generic name and genuine PNG bytes",
+      "pass": true
+    },
+    {
+      "name": "Fresh export has no EXIF, textual metadata, or animation frames",
+      "pass": true,
+      "detail": [
+        "IHDR",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ]
+    },
+    {
+      "name": "Image selection, masking and export make no HTTP requests",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "Normal editor flow raises no CSP violations",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "Secure output is independent of hidden pixels with overlaps and reversed order",
+      "pass": true,
+      "detail": {
+        "trials": 160,
+        "failures": 0
+      }
+    },
+    {
+      "name": "Paranoia mode describes user-controlled disconnection",
+      "pass": true
+    },
+    {
+      "name": "Phone layout has no horizontal document overflow",
+      "pass": true,
+      "detail": 375
+    },
+    {
+      "name": "Warning dialog fits phone viewport",
+      "pass": true
+    },
+    {
+      "name": "Self-contained file opens with browser network disabled",
+      "pass": true
+    },
+    {
+      "name": "Offline file completes image creation, masking and PNG export",
+      "pass": true
+    },
+    {
+      "name": "Offline operation makes no HTTP requests",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "App writes no web storage during tested flow",
+      "pass": true,
+      "detail": {
+        "local": 0,
+        "session": 0,
+        "dbs": 0,
+        "caches": 0
+      }
+    },
+    {
+      "name": "No uncaught browser errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "network": [
+    {
+      "url": "http://127.0.0.1:8791/",
+      "method": "GET"
+    }
+  ],
+  "errors": []
+}
