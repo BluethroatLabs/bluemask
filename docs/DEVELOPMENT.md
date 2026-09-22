@@ -12,37 +12,19 @@
 
 ## Start the application
 
-```sh
-gh repo clone BluethroatLabs/bluemask
-cd bluemask
-python3 build.py
-python3 serve.py --port 8791
-```
-
-Open `http://127.0.0.1:8791/`. The server binds to loopback and serves `dist/` only.
+Clone, build, serve, and publish steps are in [Self-hosting](SELF_HOSTING.md).
 After changing source, run `python3 build.py` again and refresh. There is no dev
 bundler or automatic rebuild. Editing `dist/` directly loses changes on rebuild.
 
 ## Checks
 
-```sh
-python3 scripts/check_build.py
-```
-
-This rebuilds, verifies artifact hashes and hosted/offline parity, extracts the
+The check commands are in [Self-hosting](SELF_HOSTING.md). `check_build.py`
+rebuilds, verifies artifact hashes and hosted/offline parity, extracts the
 source archive into a temporary directory, and checks that rebuilding it produces
 the same artifacts. GitHub Actions runs this check and JavaScript syntax checks
 on pushes and pull requests. CI does not run the macOS browser or AI suites.
 
-With the local server running in another terminal:
-
-```sh
-node scripts/verify.mjs
-node scripts/interactions.mjs
-```
-
-`verify.mjs` accepts an optional URL argument. `interactions.mjs` currently expects
-port 8791. The browser suites write reports and screenshots to `evidence/runtime/`.
+The browser suites write reports and screenshots to `evidence/runtime/`.
 The two committed runtime reports represent one recorded build, identified by
 `html_sha256`; rerunning a suite replaces its report. Do not interpret an older
 report as validation of a changed HTML file.
