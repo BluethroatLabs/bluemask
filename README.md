@@ -1,4 +1,6 @@
 # BlueMask by Bluethroat Labs
+<img width="1179" height="371" alt="image" src="https://github.com/user-attachments/assets/f9835f08-3e6d-4d74-a68d-3cbc9befd284" />
+
 
 Mask private details in photos and screenshots, locally in the browser.
 
