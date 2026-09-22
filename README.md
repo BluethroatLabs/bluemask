@@ -2,40 +2,87 @@
 
 Mask private details in photos and screenshots, locally in the browser.
 
-BlueMask is the first planned product from **Bluethroat Labs**. Draw over sensitive
-details, review the result, and download a flattened PNG. Secure masking replaces
-pixels; optional cosmetic blur is explicitly labelled **Appearance only**. There
-are no accounts, image uploads, or runtime third-party dependencies.
+People blur a seed phrase, an account number, or an address and then share the
+screenshot. The blur looks finished. For text, it often is not. Pixelation and
+Gaussian blur leave a measurement of the original pixels. When the alphabet is
+small and the font, size, and baseline are known, an attacker can render
+candidates, apply the same operator, and match the measurement. No model is
+required. What comes back is the original string.
+
+A solid mask is a different object. The covered region is a constant. Its
+variance is zero, so every candidate scores the same. There is no ranking to
+exploit and no compute budget that changes that.
+
+That is why BlueMask replaces selected pixels by default, and why cosmetic blur
+is labelled **Appearance only**.
+
+Draw over sensitive details, review the result, and download a flattened PNG. There are
+no accounts, image uploads, or runtime third-party dependencies.
 
 **Status:** locally tested release candidate. The repository includes the editor,
 self-contained offline build, synthetic model evidence, and verification scripts.
 Public production sign-off and physical mobile-browser testing remain pending.
 
-[Getting started](#run) · [Using BlueMask](#using-bluemask) ·
+[Why it matters](#why-it-matters) · [Using BlueMask](#using-bluemask) ·
 [Privacy](#privacy-design) · [Evidence](#model-evidence) ·
-[Development](docs/DEVELOPMENT.md) · [Architecture](docs/ARCHITECTURE.md) ·
-[Contributing](CONTRIBUTING.md)
+[Self-hosting](docs/SELF_HOSTING.md) · [Development](docs/DEVELOPMENT.md) ·
+[Architecture](docs/ARCHITECTURE.md) · [Contributing](CONTRIBUTING.md)
 
-## Run
+## Why it matters
 
-Python 3.10+ builds and serves the app using only its standard library.
-Node.js 22+ and macOS Google Chrome are needed only for the browser checks.
+One synthetic secret, four redactions, one attacker. The string is the
+18-character hex address `0xB7e4Aa91cF3d0852`, rendered in a known monospace
+font. The alphabet has 23 symbols, so a naive search is about 10^25
+candidates. The error falls almost independently by character, so the search
+collapses to tens of thousands of full re-renders. Nothing here is
+probabilistic and nothing is a trained model.
 
-```sh
-gh repo clone BluethroatLabs/bluemask
-cd bluemask
-python3 build.py
-python3 serve.py --port 8791
-```
+| Redaction | Attack | Result |
+| --- | --- | --- |
+| Pixelation, 14px blocks | Render a candidate, apply the same mosaic, keep the closer match | Exact original. 19,566 renders, about a minute on one CPU core. |
+| Gaussian blur, sigma 5 | Undo the convolution in the frequency domain. No search. | The text comes back. High frequencies are attenuated and still present in the signal. |
+| Gaussian blur, sigma 9 | The same deconvolution, then the same search | Deconvolution is an unreadable smear. Search still returns the exact string. |
+| Solid mask | The same search | Nothing. Region variance is 0.0. Every candidate scores identically. |
 
-Open http://127.0.0.1:8791/. The public deployment directory is `dist/` only.
-`dist/BlueMask.html` is a self-contained offline edition: HTML, CSS, JavaScript,
-fonts, artwork, FAQ and displayed benchmark images are embedded. Open the file
-directly; no localhost server, installation or service worker is needed.
+The heavy-blur row is the one that matters. The text looks destroyed, direct
+inversion fails, and the secret still falls, because the signal that survives
+is large compared with the number of strings it could have been. Heavier blur
+raises the cost. The covered pixels remain a measurement.
 
-After editing source, rebuild and refresh the browser. There is no `npm install`
-step, backend, database, or automatic rebuild. See [Development](docs/DEVELOPMENT.md)
-for detailed prerequisites and commands.
+The mask holds for a different reason. It is a constant fill, so the output
+carries no mutual information about the covered pixels. Secure masking in
+BlueMask removes those pixels before any cosmetic pass and paints an opaque
+patch last. Changing source pixels inside a secure region cannot affect the
+export when the region geometry stays fixed.
+
+This demonstration has narrow limits, and they belong next to the result:
+
+- It is about text. Exact recovery needs a small candidate space. A face has
+  no alphabet. Machine-learning face deblurring produces a plausible face.
+  Recovering the original face is a separate, weaker claim. BlueMask keeps the
+  two results separate.
+- The attacker needs the font, size, and baseline. That is realistic for
+  interface screenshots, because the unredacted rest of the image is usually
+  still there to calibrate from. It is a weaker assumption for an arbitrary
+  photograph.
+- JPEG recompression, rescaling, and screenshot scaling add noise and raise
+  cost. For a constrained alphabet, the conclusion stays the same.
+- The run used a clean synthetic render, quantised to 8-bit. A real screenshot
+  adds antialiasing, subpixel rendering, and compression, which raises the
+  number of renders. This run measured the clean render only.
+- BlueMask's own cosmetic control is three passes of a box filter. That filter
+  is still a measurement of the covered pixels. The Gaussian rows use a
+  different operator, and a different setup from the DPIR / DarkIR experiment
+  in [Model evidence](#model-evidence).
+
+The method is prior art. [Unredacter](https://bishopfox.com/blog/unredacter-tool-never-pixelation)
+(Dan Petro, Bishop Fox, 2022) recovers pixelated text the same way.
+[Depix](https://github.com/spipm/Depix) recovers passwords from screenshots
+processed with a linear box filter. The point of repeating it is the last row:
+the redaction that holds is the one BlueMask does by default.
+
+Run BlueMask from a clone, or open the offline file, with
+[Self-hosting](docs/SELF_HOSTING.md).
 
 ## Using BlueMask
 
@@ -124,34 +171,25 @@ evidence of a strong privacy attack being resisted. Gaussian controls differ fro
 BlueMask's cosmetic effect. OCR failure is not a proof of information removal.
 These are neither face-anonymization results nor results against every current AI.
 
+The text-recovery demonstration above and this table answer different questions.
+The demonstration shows that ordinary blur and pixelation of a short constrained
+string can be matched back to the original. This table records two published
+restoration models against twelve synthetic codes. Neither result is a claim
+that BlueMask defeats every recovery method.
+
 `dist/bluemask-model-evidence.zip` contains synthetic originals, processed images,
 restoration outputs, measured OCR, model provenance, checksums and reproduction
 instructions. Large model weights and development environments are excluded.
 
 ## Verification
 
-Build integrity and source-archive reproduction:
-
-```sh
-python3 scripts/check_build.py
-```
-
-With a local server running and Google Chrome installed on macOS:
-
-```sh
-node scripts/verify.mjs
-node scripts/interactions.mjs
-```
-
-The scripts use an isolated browser profile and the Chrome DevTools Protocol, not
-the user's browsing profile. They exercise the actual built HTML, not a separate
-test UI. The reports in `evidence/runtime/` bind checks to the delivered HTML hash.
-
-Current coverage: consent dialogs, secure defaults, export guards, generic PNG,
-PNG metadata chunks, no image-processing HTTP requests, no web-storage writes,
-offline-file open/mask/export, 160 seeded hidden-pixel perturbation cases with
-overlaps and reversed order, real mouse/touch gestures, resize/undo, export races,
-and recovery from rendering failures. Screenshots cover desktop, phone viewport,
+Build integrity, source-archive reproduction, and the browser suites are run
+with the commands in [Self-hosting](docs/SELF_HOSTING.md). Current coverage:
+consent dialogs, secure defaults, export guards, generic PNG, PNG metadata
+chunks, no image-processing HTTP requests, no web-storage writes, offline-file
+open/mask/export, 160 seeded hidden-pixel perturbation cases with overlaps and
+reversed order, real mouse/touch gestures, resize/undo, export races, and
+recovery from rendering failures. Screenshots cover desktop, phone viewport,
 light appearance and the Privacy Scroll.
 
 Browser-engine evidence is currently headless Chrome on macOS. Phone emulation is
@@ -174,38 +212,9 @@ environment and exact checkpoint provenance are documented in
 | `research/` | Synthetic evaluation harnesses and retained upstream source |
 | `evidence/ai/` | Fixtures, outputs, measured results, and reproducibility archive |
 | `evidence/runtime/` | Recorded browser checks bound to a built HTML hash |
-| `docs/` | Architecture, development, privacy, release, and brand documentation |
+| `docs/` | Self-hosting, architecture, development, privacy, release, and brand documentation |
 
 Generated `dist/`, local environments, downloaded weights, caches, and the compiled
 OCR helper are intentionally ignored. No application or research source code
 depends on those files being committed.
 
-## Release artifacts and hosting
-
-`build.py` is deterministic for a fixed source tree and recorded model evidence.
-It emits identical hosted/offline HTML, a SHA-256 manifest, hash list and static
-hosting header configuration. The bundled fonts retain their complete OFL notices.
-
-Serve only `dist/`, with the headers in `_headers` applied by the hosting platform.
-Disable hosting-provider analytics/script injection, use HTTPS, and do not add
-image-upload endpoints. The local `serve.py` applies the equivalent security headers.
-Do not publish the research environment, internal product notes or browser profiles.
-
-Before a public production sign-off: smoke-test real Safari/iOS and Android devices,
-review deployment headers and actual served bytes, and establish the public source
-and independently verifiable release-signing/distribution process. Broader recent
-model and photographic-content evaluations are needed before expanding the current
-benchmark wording. This is a locally tested release candidate, not that sign-off.
-
-See [Releasing](docs/RELEASING.md) for the artifact inventory and deployment workflow.
-
-## Contributing, security, and licensing
-
-Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing privacy behavior or evidence.
-Report suspected security issues using [SECURITY.md](SECURITY.md), with synthetic
-reproduction material. The detailed trust boundaries are in
-[Privacy](docs/PRIVACY.md).
-
-A project-wide license has not yet been selected. Bundled fonts and research code
-retain their upstream licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-Bluethroat branding and artwork have separate provenance records.
