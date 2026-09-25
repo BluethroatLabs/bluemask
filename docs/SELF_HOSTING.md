@@ -61,6 +61,7 @@ notices.
 | --- | --- |
 | `index.html` | Hosted application |
 | `BlueMask.html` | Identical standalone offline edition |
+| `privacy.html`, `terms.html`, `support.html` | Privacy notice, terms, and support |
 | `bluemask-source.zip` | Source, documentation, and inputs needed to rebuild |
 | `bluemask-model-evidence.zip` | Recorded synthetic experiment and reproduction files |
 | `manifest.json` | Build ID, engine hash, and artifact SHA-256 values |

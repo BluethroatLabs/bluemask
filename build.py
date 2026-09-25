@@ -74,8 +74,10 @@ def build():
     wordmark = (ROOT / 'assets/bluethroat-wordmark.svg').read_text()
     evidence_html = evidence()
     source = (ROOT / 'app.html').read_text()
-    build_id = digest((''.join([source, engine, app, css, scroll, evidence_html, emblem, wordmark, licenses])).encode())[:12]
+    legal_sources = [(ROOT / 'pages' / name).read_text() for name in ['privacy.html', 'terms.html', 'support.html']]
+    build_id = digest((''.join([source, engine, app, css, scroll, evidence_html, emblem, wordmark, licenses, *legal_sources])).encode())[:12]
     csp = "; ".join(["default-src 'none'", 'script-src ' + csp_hash(engine) + ' ' + csp_hash(app), 'style-src ' + csp_hash(css), "style-src-attr 'none'", 'img-src data: blob:', 'font-src data:', "connect-src 'none'", "object-src 'none'", "frame-src 'none'", "base-uri 'none'", "form-action 'none'"])
+    legal_csp = "; ".join(["default-src 'none'", "script-src 'none'", 'style-src ' + csp_hash(css), "style-src-attr 'none'", 'img-src data:', 'font-src data:', "connect-src 'none'", "object-src 'none'", "frame-src 'none'", "base-uri 'none'", "form-action 'none'"])
     values = {'CSP': csp, 'ICON': data_uri('assets/bluethroat-emblem.svg'), 'CSS': css, 'EMBLEM': emblem, 'WORDMARK': wordmark, 'EVIDENCE': evidence_html, 'BUILD_ID': build_id, 'PRIVACY_SCROLL': scroll, 'FONT_LICENSES': licenses, 'ENGINE': engine, 'APP': app}
     page = re.sub(r'\{\{([A-Z_]+)\}\}', lambda m: values[m[1]], source)
     if re.search(r'\{\{[A-Z_]+\}\}', page):
@@ -83,9 +85,17 @@ def build():
     encoded = page.encode()
     for name in ['index.html', 'BlueMask.html']:
         (OUT / name).write_bytes(encoded)
+    legal_values = {**values, 'CSP': legal_csp}
+    legal_names = ['privacy.html', 'terms.html', 'support.html']
+    for name, text in zip(legal_names, legal_sources):
+        legal_page = re.sub(r'\{\{([A-Z_]+)\}\}', lambda m: legal_values[m[1]], text)
+        if re.search(r'\{\{[A-Z_]+\}\}', legal_page):
+            raise SystemExit('Unresolved build placeholder')
+        (OUT / name).write_bytes(legal_page.encode())
     archive = ROOT / 'evidence/ai/bluemask-model-evidence.zip'
     if archive.exists(): shutil.copyfile(archive, OUT / archive.name)
     source_files = [ROOT / name for name in ['README.md', 'CONTRIBUTING.md', 'SECURITY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', '.gitattributes', 'app.html', 'app.js', 'engine.js', 'styles.css', 'privacy-scroll.html', 'build.py', 'serve.py']]
+    source_files += [ROOT / 'pages' / name for name in ['privacy.html', 'terms.html', 'support.html']]
     source_files += [p for p in (ROOT / 'scripts').iterdir() if p.is_file() and p.suffix in ['.mjs', '.py']]
     source_files += [p for p in (ROOT / 'docs').rglob('*.md')]
     source_files += [p for p in (ROOT / '.github').rglob('*.yml')]
@@ -103,7 +113,7 @@ def build():
             entry.external_attr = 0o644 << 16
             z.writestr(entry, p.read_bytes())
     (OUT / '_headers').write_text('/*\n  Referrer-Policy: no-referrer\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Content-Security-Policy: frame-ancestors \'none\'\n/*.html\n  Cache-Control: no-store\n')
-    manifest = {'build_id': build_id, 'engine_sha256': digest(engine.encode()), 'artifacts': {name: digest((OUT / name).read_bytes()) for name in ['index.html', 'BlueMask.html', '_headers', 'bluemask-source.zip']}}
+    manifest = {'build_id': build_id, 'engine_sha256': digest(engine.encode()), 'artifacts': {name: digest((OUT / name).read_bytes()) for name in ['index.html', 'BlueMask.html', 'privacy.html', 'terms.html', 'support.html', '_headers', 'bluemask-source.zip']}}
     if archive.exists(): manifest['artifacts'][archive.name] = digest(archive.read_bytes())
     (OUT / 'manifest.json').write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n')
     (OUT / 'SHA256SUMS').write_text(''.join(f'{v}  {k}\n' for k, v in sorted(manifest['artifacts'].items())))

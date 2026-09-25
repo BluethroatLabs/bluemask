@@ -240,6 +240,7 @@
   $('begin-offline').onclick = () => { $('paranoia-dialog').close(); if (state.source) clearSession(); toast('Disconnect with your device controls before choosing your private image.'); };
   window.addEventListener('online', connection); window.addEventListener('offline', connection);
   if (location.protocol === 'file:') {
+    document.querySelectorAll('[data-hosted]').forEach(link => { link.hidden = true; });
     $('offline-download').removeAttribute('href'); $('offline-download').removeAttribute('download'); $('offline-download').textContent = 'You are using the offline edition';
     $('paranoia-download').hidden = true; $('begin-offline').textContent = 'Continue with this offline edition';
     $('source-download').removeAttribute('href'); $('source-download').removeAttribute('download'); $('source-download').textContent = 'Source and release hashes are available with the hosted edition.'; $('manifest-download').hidden = true;
