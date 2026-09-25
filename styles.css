@@ -463,11 +463,13 @@ figure.comparison { min-width: 0; margin: 0; border: 1px solid var(--rule); back
 .legal-page { border-block: 1px solid var(--rule); background: var(--panel); }
 .legal-page-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding: 16px 20px; border-bottom: 1px solid var(--rule); }
 .legal-page-head h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.375rem); font-weight: 400; line-height: 1; letter-spacing: .005em; }
-.legal-page-head .button { min-height: 44px; font-size: var(--text-note); text-decoration: underline; text-underline-offset: 4px; }
-.legal-copy { max-width: 75ch; padding: 28px 20px 40px; color: var(--muted); font-size: var(--text-note); line-height: 2; }
+.legal-page-head .button { min-height: 44px; font-size: var(--text-note); }
+.legal-copy { max-width: 90ch; padding: 28px 20px 40px; color: var(--muted); font-size: var(--text-note); line-height: 2; }
 .legal-copy > * + * { margin-top: 20px; }
-.legal-copy section > * + * { margin-top: 12px; }
 .legal-copy h2 { color: var(--ink); font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1; }
+.legal-copy .legal-meta { color: var(--quiet); }
+.legal-copy ul { margin-bottom: 0; padding-left: 1.5rem; }
+.legal-copy li + li { margin-top: 4px; }
 .legal-copy strong { color: var(--ink); font-weight: 600; }
 .legal-copy a { color: var(--ink); text-decoration-color: var(--rule); overflow-wrap: anywhere; }
 .legal-copy a:hover { text-decoration-color: var(--ink); }
