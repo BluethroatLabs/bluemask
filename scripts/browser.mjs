@@ -1,11 +1,24 @@
 import { spawn } from 'node:child_process';
+import { accessSync, constants } from 'node:fs';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
 export async function browser() {
   const profile = await mkdtemp(path.join(tmpdir(), 'bluemask-browser-'));
-  const child = spawn('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', [
+  const candidates = [
+    process.env.CHROME_BIN,
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/google-chrome',
+    '/usr/bin/chromium',
+    '/usr/bin/chromium-browser',
+  ].filter(Boolean);
+  const executable = candidates.find(candidate => {
+    try { accessSync(candidate, constants.X_OK); return true; } catch { return false; }
+  });
+  if (!executable) throw new Error('Chrome or Chromium was not found. Set CHROME_BIN to its executable path.');
+  const child = spawn(executable, [
     '--headless=new', '--no-first-run', '--no-default-browser-check', '--disable-extensions',
     '--disable-background-networking', '--disable-component-update', '--remote-debugging-port=0',
     '--remote-debugging-address=127.0.0.1', `--user-data-dir=${profile}`, 'about:blank'

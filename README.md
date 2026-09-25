@@ -126,6 +126,18 @@ gesture. Editing shortcuts are inactive while typing in a coordinate field.
 - About and Tests open separate monochrome parchment scrolls. The editor shows
   no test results until Tests is opened. Reports, source links and file hashes
   live in Tests; About contains expandable questions. Both work offline.
+- The ruled footer links to static Privacy, Terms and Support pages. A single
+  outer layout owns the shared navigation, BlueMask intro and attribution footer,
+  so the editor and every legal page use exactly the same site chrome.
+- The centered shell stays at `width: 100%`. Its maximum width is 40rem at
+  viewports of at least 40rem, 48rem at 48rem, 64rem at 64rem, 80rem at 80rem,
+  and 96rem at 96rem.
+- The appearance toggle persists only the selected light or dark theme under the
+  `localStorage` key `bluemask-theme`, across reloads and the editor, Privacy,
+  Terms and Support pages. An early HTML-class boot applies the saved appearance
+  before page styles render to avoid a theme flash.
+- A selected masking method keeps its inverse selected palette on hover rather
+  than taking on the unselected raised hover treatment.
 - Typography follows bluethroatlabs.com's measured scale: 16px base text, 18px
   navigation, 20px desktop reading copy, and 16px mobile reading copy. Supporting
   labels stay at least 14px. The title uses its 120/80/60px responsive display
@@ -133,10 +145,12 @@ gesture. Editing shortcuts are inactive while typing in a coordinate field.
 
 ## Privacy design
 
-The app contains no image-upload, analytics, telemetry, cookie, local-storage,
-IndexedDB or service-worker code. Fonts and artwork are embedded rather than
-requested from other sites. A restrictive Content Security Policy uses hashes for
-the two scripts and stylesheet and sets `connect-src 'none'`.
+The app contains no image-upload, analytics, telemetry, cookie, IndexedDB or
+service-worker code. Its only web-storage write is the light/dark appearance
+preference stored in `localStorage` under `bluemask-theme`; image and editor state
+remain memory-only. Fonts and artwork are embedded rather than requested from
+other sites. A restrictive Content Security Policy uses hashes for its scripts
+and stylesheet and sets `connect-src 'none'`.
 
 Choosing a file reads it into browser memory. Export creates a new image rather
 than forwarding the original file or its filename and metadata. The engine first
@@ -188,8 +202,9 @@ instructions. Large model weights and development environments are excluded.
 Build integrity, source-archive reproduction, and the browser suites are run
 with the commands in [Self-hosting](docs/SELF_HOSTING.md). Current coverage:
 consent dialogs, secure defaults, export guards, generic PNG, PNG metadata
-chunks, no image-processing HTTP requests, no web-storage writes, offline-file
-open/mask/export, 160 seeded hidden-pixel perturbation cases with overlaps and
+chunks, no image-processing HTTP requests, web storage limited to the appearance
+preference, offline-file open/mask/export, 160 seeded hidden-pixel perturbation
+cases with overlaps and
 reversed order, real mouse/touch gestures, resize/undo, export races, and
 recovery from rendering failures. Screenshots cover desktop, phone viewport,
 light appearance and the Privacy Scroll.
@@ -206,7 +221,10 @@ environment and exact checkpoint provenance are documented in
 
 | Path | Contents |
 | --- | --- |
-| `app.html`, `app.js`, `styles.css` | Editor UI, state, interactions, and visual design |
+| `layout.html` | Shared document head, navigation, BlueMask intro, and footer |
+| `app.html`, `app.js`, `styles.css` | Editor content, dialogs, state, interactions, and visual design |
+| `legal-page.html`, `legal/` | Shared legal article structure and page-specific content |
+| `theme-boot.js`, `theme.js` | Early appearance boot, cross-page theme toggle and preference persistence |
 | `engine.js` | Pixel replacement and cosmetic rendering |
 | `privacy-scroll.html`, `assets/` | FAQ, bundled fonts, artwork, and brand assets |
 | `build.py`, `serve.py` | Deterministic packaging and local static server |
@@ -219,4 +237,3 @@ environment and exact checkpoint provenance are documented in
 Generated `dist/`, local environments, downloaded weights, caches, and the compiled
 OCR helper are intentionally ignored. No application or research source code
 depends on those files being committed.
-

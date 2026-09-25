@@ -8,7 +8,9 @@ models and makes no server request to process an image.
 
 | File or directory | Responsibility |
 | --- | --- |
-| `app.html` | Editor, controls, native dialogs, and build placeholders |
+| `layout.html` | Shared document head, navigation, product intro, and footer |
+| `app.html` | Editor, controls, native dialogs, and app-only placeholders |
+| `legal-page.html`, `legal/` | Shared legal article structure and page-specific copy |
 | `styles.css` | Responsive layout, themes, type scale, and parchment treatment |
 | `app.js` | Image loading, editor state, gestures, consent, history, and export |
 | `engine.js` | Rectangle normalization, secure replacement, cosmetic processing |

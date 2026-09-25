@@ -9,13 +9,10 @@
   function toast(message) { $('toast').textContent = message; $('toast').hidden = false; clearTimeout(toast.timer); toast.timer = setTimeout(() => { $('toast').hidden = true; }, 4500); }
   function openDialog(id) { $(id).showModal(); }
   for (const button of document.querySelectorAll('[data-close]')) button.onclick = () => button.closest('dialog').close();
-  for (const button of document.querySelectorAll('[data-scroll]')) button.onclick = () => openDialog('scroll-dialog');
-  $('tests').onclick = () => openDialog('tests-dialog');
-  $('theme').onclick = () => {
-    const light = document.body.classList.toggle('light');
-    const label = light ? 'Switch to dark appearance' : 'Switch to light appearance';
-    $('theme').setAttribute('aria-label', label); $('theme').title = label;
-  };
+  for (const link of document.querySelectorAll('[data-scroll]')) link.onclick = e => { e.preventDefault(); openDialog('scroll-dialog'); };
+  $('tests').onclick = e => { e.preventDefault(); openDialog('tests-dialog'); };
+  if (location.hash === '#about') openDialog('scroll-dialog');
+  if (location.hash === '#tests') openDialog('tests-dialog');
   function method(value) {
     if (state.busy) return;
     state.method = value;
