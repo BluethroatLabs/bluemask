@@ -7,6 +7,9 @@ param prefix string = 'bluemask'
 @description('Create Azure Front Door in front of the static website')
 param deployFrontDoor bool = true
 
+@description('Hostname Front Door serves in addition to its azurefd.net endpoint')
+param customDomainHostName string = 'bluemask.bluethroatlabs.com'
+
 var tags = {
   project: 'bluemask'
   environment: 'sandbox'
@@ -18,6 +21,7 @@ var tags = {
 
 var storageName = take('st${prefix}${uniqueString(resourceGroup().id)}', 24)
 var endpointName = take('${prefix}-${uniqueString(resourceGroup().id)}', 50)
+var customDomainName = replace(customDomainHostName, '.', '-')
 var staticHost = replace(replace(storage.properties.primaryEndpoints.web, 'https://', ''), '/', '')
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
@@ -160,6 +164,18 @@ resource headersRule 'Microsoft.Cdn/profiles/ruleSets/rules@2021-06-01' = if (de
   }
 }
 
+resource customDomain 'Microsoft.Cdn/profiles/customDomains@2023-05-01' = if (deployFrontDoor) {
+  parent: profile
+  name: customDomainName
+  properties: {
+    hostName: customDomainHostName
+    tlsSettings: {
+      certificateType: 'ManagedCertificate'
+      minimumTlsVersion: 'TLS12'
+    }
+  }
+}
+
 resource route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2021-06-01' = if (deployFrontDoor) {
   parent: endpoint
   name: 'web'
@@ -182,6 +198,11 @@ resource route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2021-06-01' = if (dep
     httpsRedirect: 'Enabled'
     linkToDefaultDomain: 'Enabled'
     enabledState: 'Enabled'
+    customDomains: [
+      {
+        id: customDomain.id
+      }
+    ]
     ruleSets: [
       {
         id: ruleSet.id
