@@ -13,8 +13,40 @@ try {
   b.on('Runtime.exceptionThrown', e => errors.push(e.exceptionDetails.text + ': ' + e.exceptionDetails.exception?.description));
   await b.send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await b.navigate(url);
+  await b.evaluate("document.getElementById('theme').click()");
+  await b.navigate(url);
+  check('Appearance preference survives a reload', await b.evaluate("document.documentElement.classList.contains('light') && document.body.classList.contains('light') && localStorage.getItem('bluemask-theme')==='light' && document.getElementById('theme').getAttribute('aria-label')==='Switch to dark appearance'"));
+  await b.evaluate("document.getElementById('theme').click()");
+  const containerWidths = [[639,639],[640,640],[767,640],[768,768],[1023,768],[1024,1024],[1279,1024],[1280,1280],[1535,1280],[1536,1536]];
+  let containerPass = true;
+  const containerDetail = [];
+  for (const [viewport, expected] of containerWidths) {
+    await b.send('Emulation.setDeviceMetricsOverride', { width: viewport, height: 1000, deviceScaleFactor: 1, mobile: false });
+    const measured = await b.evaluate("({actual:Math.round(document.querySelector('.container').getBoundingClientRect().width),available:document.documentElement.clientWidth})");
+    const effectiveExpected = Math.min(expected, measured.available);
+    containerDetail.push({ viewport, expected: effectiveExpected, actual: measured.actual });
+    containerPass &&= measured.actual === effectiveExpected;
+  }
+  check('Container follows the requested responsive max-width scale', containerPass, containerDetail);
+  await b.send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  check('Shared navigation links retain the button treatment', await b.evaluate("(()=>{const links=[...document.querySelectorAll('.top-actions>a')],button=document.getElementById('theme').getBoundingClientRect();return links.every(link=>{const style=getComputedStyle(link),rect=link.getBoundingClientRect();return style.textDecorationLine==='none'&&style.display.includes('flex')&&style.alignItems==='center'&&Math.round(rect.height)===Math.round(button.height)})})()"));
+  const sharedChrome = await b.evaluate("JSON.stringify(['.topbar','.intro','.page-footer'].map(selector=>document.querySelector(selector).outerHTML))");
+  await b.navigate(new URL('privacy.html', url).href);
+  check('Legal pages use the exact editor header, intro and footer', await b.evaluate("JSON.stringify(['.topbar','.intro','.page-footer'].map(selector=>document.querySelector(selector).outerHTML))")===sharedChrome);
+  check('Footer policy links open a real BlueMask page', await b.evaluate("document.querySelector('.legal-page h1').textContent==='Privacy' && document.querySelectorAll('.footer-links a').length===4"));
+  await b.evaluate("document.getElementById('theme').click()");
+  await b.navigate(new URL('support.html', url).href);
+  check('Appearance preference persists between linked pages', await b.evaluate("document.documentElement.classList.contains('light') && document.body.classList.contains('light') && document.querySelector('.legal-page h1').textContent==='Support'"));
+  await b.evaluate("document.getElementById('theme').click()");
+  await b.navigate(new URL('index.html#about', url).href);
+  check('Shared About navigation opens the editor dialog from legal pages', await b.evaluate("document.getElementById('scroll-dialog').open"));
+  await b.navigate(url);
   await b.evaluate("window.violations=[];document.addEventListener('securitypolicyviolation',e=>violations.push(e.violatedDirective));");
   check('Secure mode is the default; untouched export is blocked', await b.evaluate("document.getElementById('secure').getAttribute('aria-pressed')==='true' && document.getElementById('download').disabled"));
+  const secureRect = await b.evaluate("(()=>{const r=document.getElementById('secure').getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}})()");
+  await b.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: secureRect.x, y: secureRect.y });
+  check('Selected method stays readable on hover', await b.evaluate("(()=>{const s=getComputedStyle(document.getElementById('secure')),body=getComputedStyle(document.body);return s.backgroundColor===body.color&&s.color===body.backgroundColor})()"));
+  await b.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 1, y: 1 });
   await b.evaluate("document.getElementById('blur').click()");
   check('Cosmetic blur opens explicit warning without changing mode', await b.evaluate("document.getElementById('mode-dialog').open && document.getElementById('secure').getAttribute('aria-pressed')==='true'"));
   check('Recommended secure action receives initial focus', await b.evaluate("document.activeElement.id==='recommend-secure'"));
@@ -87,8 +119,8 @@ try {
   for(let i=0;i<80;i++){if(await b.evaluate('offlineDownloads.length>0'))break;await new Promise(r=>setTimeout(r,50))}
   check('Offline file completes image creation, masking and PNG export', await b.evaluate("offlineDownloads[0]==='bluemask.png'"));
   check('Offline operation makes no HTTP requests', network.length===beforeOffline,network.slice(beforeOffline));
-  const storage=await b.evaluate("(async()=>({local:localStorage.length,session:sessionStorage.length,dbs:(await indexedDB.databases()).length,caches:typeof caches==='undefined'?0:(await caches.keys()).length}))()");
-  check('App writes no web storage during tested flow',Object.values(storage).every(x=>x===0),storage);
+  const storage=await b.evaluate("(async()=>({local:Object.entries(localStorage),session:sessionStorage.length,dbs:(await indexedDB.databases()).length,caches:typeof caches==='undefined'?0:(await caches.keys()).length}))()");
+  check('App stores only the appearance preference',storage.local.every(([key,value])=>key==='bluemask-theme'&&['light','dark'].includes(value))&&storage.local.length<=1&&storage.session===0&&storage.dbs===0&&storage.caches===0,storage);
   check('No uncaught browser errors', errors.length===0,errors);
   const report={tested_at:new Date().toISOString(),browser:await b.send('Browser.getVersion'),html_sha256:createHash('sha256').update(await readFile(path.join(root,'dist/BlueMask.html'))).digest('hex'),checks,network,errors};
   await writeFile(path.join(output,'results.json'),JSON.stringify(report,null,2)+'\n');

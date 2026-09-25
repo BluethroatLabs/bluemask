@@ -67,25 +67,67 @@ def build():
     css = re.sub(r'url\([\'\"]?(assets/[^\)\'\"]+)[\'\"]?\)', lambda m: 'url("' + data_uri(m[1]) + '")', css)
     engine = (ROOT / 'engine.js').read_text()
     app = (ROOT / 'app.js').read_text()
+    theme_boot = (ROOT / 'theme-boot.js').read_text()
+    theme = (ROOT / 'theme.js').read_text()
     scroll = (ROOT / 'privacy-scroll.html').read_text()
     licenses = '\n\n'.join(p.read_text() for p in sorted((ROOT / 'assets/fonts').glob('*OFL.txt'))).replace('--', '—')
-    emblem = (ROOT / 'assets/bluethroat-emblem.svg').read_text()
-    emblem = re.sub(r'<\?xml[^>]*\?>', '', emblem)
     wordmark = (ROOT / 'assets/bluethroat-wordmark.svg').read_text()
+    bluemask_full = (ROOT / 'assets/bluemask-full.svg').read_text()
+    bluemask_small = (ROOT / 'assets/bluemask-small.svg').read_text()
+    bluemask_full = re.sub(r'\sstyle="[^"]*"', '', bluemask_full)
+    bluemask_small = re.sub(r'\sstyle="[^"]*"', '', bluemask_small)
     evidence_html = evidence()
+    layout = (ROOT / 'layout.html').read_text()
     source = (ROOT / 'app.html').read_text()
-    build_id = digest((''.join([source, engine, app, css, scroll, evidence_html, emblem, wordmark, licenses])).encode())[:12]
-    csp = "; ".join(["default-src 'none'", 'script-src ' + csp_hash(engine) + ' ' + csp_hash(app), 'style-src ' + csp_hash(css), "style-src-attr 'none'", 'img-src data: blob:', 'font-src data:', "connect-src 'none'", "object-src 'none'", "frame-src 'none'", "base-uri 'none'", "form-action 'none'"])
-    values = {'CSP': csp, 'ICON': data_uri('assets/bluethroat-emblem.svg'), 'CSS': css, 'EMBLEM': emblem, 'WORDMARK': wordmark, 'EVIDENCE': evidence_html, 'BUILD_ID': build_id, 'PRIVACY_SCROLL': scroll, 'FONT_LICENSES': licenses, 'ENGINE': engine, 'APP': app}
-    page = re.sub(r'\{\{([A-Z_]+)\}\}', lambda m: values[m[1]], source)
-    if re.search(r'\{\{[A-Z_]+\}\}', page):
-        raise SystemExit('Unresolved build placeholder')
+    app_content, app_extras = source.split('<!-- APP_EXTRAS -->', 1)
+    legal_template = (ROOT / 'legal-page.html').read_text()
+    legal_pages = {
+        'privacy': ('Privacy', 'How BlueMask handles images, exports, network access, and privacy limits.', (ROOT / 'legal/privacy.html').read_text()),
+        'terms': ('Terms', 'Terms of use and important limitations for BlueMask.', (ROOT / 'legal/terms.html').read_text()),
+        'support': ('Support', 'How to report BlueMask issues and security or privacy concerns.', (ROOT / 'legal/support.html').read_text()),
+    }
+    legal_source = ''.join(title + description + body for title, description, body in legal_pages.values())
+    build_id = digest((''.join([layout, source, legal_template, legal_source, engine, app, theme_boot, theme, css, scroll, evidence_html, wordmark, bluemask_full, bluemask_small, licenses])).encode())[:12]
+    csp = "; ".join(["default-src 'none'", 'script-src ' + ' '.join(map(csp_hash, [engine, app, theme_boot, theme])), 'style-src ' + csp_hash(css), "style-src-attr 'none'", "img-src 'self' data: blob:", 'font-src data:', "manifest-src 'self'", "connect-src 'none'", "object-src 'none'", "frame-src 'none'", "base-uri 'none'", "form-action 'none'"])
+    values = {'CSP': csp, 'CSS': css, 'WORDMARK': wordmark, 'BLUEMASK_FULL': bluemask_full, 'BLUEMASK_SMALL': bluemask_small, 'EVIDENCE': evidence_html, 'BUILD_ID': build_id, 'PRIVACY_SCROLL': scroll, 'FONT_LICENSES': licenses, 'ENGINE': engine, 'THEME_BOOT': theme_boot, 'THEME': theme, 'APP': app}
+    def render(template, replacements):
+        page = template
+        placeholder = re.compile(r'\{\{([A-Z_]+)\}\}')
+        while match := placeholder.search(page):
+            missing = sorted({m.group(1) for m in placeholder.finditer(page)} - replacements.keys())
+            if missing:
+                raise SystemExit('Unresolved build placeholder: ' + ', '.join(missing))
+            page = placeholder.sub(lambda m: replacements[m.group(1)], page)
+        return page
+    page = render(layout, {
+        **values,
+        'PAGE_TITLE': 'BlueMask — Bluethroat Labs',
+        'PAGE_DESCRIPTION': 'Mask private details in photos and screenshots. BlueMask by Bluethroat Labs works locally, with a downloadable offline edition.',
+        'PAGE_CONTENT': app_content.strip(),
+        'PAGE_EXTRAS': app_extras.strip(),
+        'PAGE_SCRIPTS': '<script>{{ENGINE}}</script>\n<script>{{APP}}</script>',
+    })
     encoded = page.encode()
     for name in ['index.html', 'BlueMask.html']:
         (OUT / name).write_bytes(encoded)
+    for slug, (title, description, body) in legal_pages.items():
+        legal_values = {
+            **values,
+            'LEGAL_TITLE': title,
+            'LEGAL_BODY': body,
+            'PAGE_TITLE': f'{title} — BlueMask',
+            'PAGE_DESCRIPTION': description,
+            'PAGE_CONTENT': legal_template,
+            'PAGE_EXTRAS': '',
+            'PAGE_SCRIPTS': '',
+        }
+        (OUT / f'{slug}.html').write_text(render(layout, legal_values))
+    for favicon in (ROOT / 'assets/favicon').iterdir():
+        if favicon.is_file(): shutil.copyfile(favicon, OUT / favicon.name)
     archive = ROOT / 'evidence/ai/bluemask-model-evidence.zip'
     if archive.exists(): shutil.copyfile(archive, OUT / archive.name)
-    source_files = [ROOT / name for name in ['README.md', 'CONTRIBUTING.md', 'SECURITY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', '.gitattributes', 'app.html', 'app.js', 'engine.js', 'styles.css', 'privacy-scroll.html', 'build.py', 'serve.py']]
+    source_files = [ROOT / name for name in ['README.md', 'CONTRIBUTING.md', 'SECURITY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', '.gitattributes', 'layout.html', 'app.html', 'legal-page.html', 'app.js', 'theme-boot.js', 'theme.js', 'engine.js', 'styles.css', 'privacy-scroll.html', 'build.py', 'serve.py']]
+    source_files += [p for p in (ROOT / 'legal').glob('*.html')]
     source_files += [p for p in (ROOT / 'scripts').iterdir() if p.is_file() and p.suffix in ['.mjs', '.py']]
     source_files += [p for p in (ROOT / 'docs').rglob('*.md')]
     source_files += [p for p in (ROOT / '.github').rglob('*.yml')]
@@ -103,7 +145,8 @@ def build():
             entry.external_attr = 0o644 << 16
             z.writestr(entry, p.read_bytes())
     (OUT / '_headers').write_text('/*\n  Referrer-Policy: no-referrer\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Content-Security-Policy: frame-ancestors \'none\'\n/*.html\n  Cache-Control: no-store\n')
-    manifest = {'build_id': build_id, 'engine_sha256': digest(engine.encode()), 'artifacts': {name: digest((OUT / name).read_bytes()) for name in ['index.html', 'BlueMask.html', '_headers', 'bluemask-source.zip']}}
+    manifest_names = ['index.html', 'BlueMask.html', 'privacy.html', 'terms.html', 'support.html', '_headers', 'bluemask-source.zip']
+    manifest = {'build_id': build_id, 'engine_sha256': digest(engine.encode()), 'artifacts': {name: digest((OUT / name).read_bytes()) for name in manifest_names}}
     if archive.exists(): manifest['artifacts'][archive.name] = digest(archive.read_bytes())
     (OUT / 'manifest.json').write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n')
     (OUT / 'SHA256SUMS').write_text(''.join(f'{v}  {k}\n' for k, v in sorted(manifest['artifacts'].items())))

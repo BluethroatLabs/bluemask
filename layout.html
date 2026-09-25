@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="{{CSP}}">
+<meta name="description" content="{{PAGE_DESCRIPTION}}">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0a">
+<title>{{PAGE_TITLE}}</title>
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="BlueMask" />
+<link rel="manifest" href="/site.webmanifest" />
+<script>{{THEME_BOOT}}</script>
+<style>{{CSS}}</style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="shell container">
+  <header class="topbar">
+    <a class="brand" href="https://bluethroatlabs.com/" target="_blank" rel="noopener noreferrer" aria-label="Bluethroat Labs website"><span class="brand-wordmark" aria-hidden="true">{{WORDMARK}}</span></a>
+    <nav class="top-actions" aria-label="Main navigation">
+      <a href="index.html#about" data-scroll aria-haspopup="dialog">About</a>
+      <a id="tests" href="index.html#tests" aria-haspopup="dialog">Tests</a>
+      <button id="theme" type="button" aria-label="Switch to light appearance" title="Switch to light appearance">
+        <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+        <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.9 13.1A9 9 0 0 1 10.9 3.1a9 9 0 1 0 10 10Z"/></svg>
+      </button>
+    </nav>
+  </header>
+  <main id="content">
+    <section class="intro" aria-labelledby="product-title">
+      <div class="intro-inner">
+        <a class="product-lockup" href="index.html#workspace" aria-label="BlueMask image editor">
+          <span class="product-mark product-mark-full" aria-hidden="true">{{BLUEMASK_FULL}}</span>
+          <span class="product-mark product-mark-small" aria-hidden="true">{{BLUEMASK_SMALL}}</span>
+          <h1 id="product-title">BlueMask</h1>
+        </a>
+        <div class="intro-copy">
+          <p>Hide private details in photos and screenshots.</p>
+          <p>Draw over sensitive details, review the coverage, then export a flattened PNG.</p>
+        </div>
+      </div>
+    </section>
+    {{PAGE_CONTENT}}
+  </main>
+  <footer class="page-footer">
+    <div class="footer-brand"><span>A local-first tool by</span><a href="https://bluethroatlabs.com/" target="_blank" rel="noopener noreferrer" aria-label="Bluethroat Labs website"><span class="footer-wordmark" aria-hidden="true">{{WORDMARK}}</span></a></div>
+    <nav class="footer-links" aria-label="Policies and support"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a id="offline-download" href="BlueMask.html" download="BlueMask.html">Offline edition ↓</a></nav>
+  </footer>
+</div>
+{{PAGE_EXTRAS}}
+<script>{{THEME}}</script>
+{{PAGE_SCRIPTS}}
+</body>
+</html>
