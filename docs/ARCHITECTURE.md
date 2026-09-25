@@ -13,6 +13,7 @@ models and makes no server request to process an image.
 | `app.js` | Image loading, editor state, gestures, consent, history, and export |
 | `engine.js` | Rectangle normalization, secure replacement, cosmetic processing |
 | `privacy-scroll.html` | About / FAQ content inserted at build time |
+| `pages/` | Privacy notice, terms, and support pages copied into the build |
 | `assets/` | Locally bundled fonts, licenses, logo, and artwork |
 | `build.py` | Inline assets, CSP hashes, source archive, manifest, and checksums |
 | `serve.py` | Loopback-only development server serving `dist/` |

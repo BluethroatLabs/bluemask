@@ -214,6 +214,7 @@ environment and exact checkpoint provenance are documented in
 | `research/` | Synthetic evaluation harnesses and retained upstream source |
 | `evidence/ai/` | Fixtures, outputs, measured results, and reproducibility archive |
 | `evidence/runtime/` | Recorded browser checks bound to a built HTML hash |
+| `pages/` | Privacy notice, terms of service, and support |
 | `docs/` | Self-hosting, architecture, development, privacy, release, and brand documentation |
 
 Generated `dist/`, local environments, downloaded weights, caches, and the compiled
