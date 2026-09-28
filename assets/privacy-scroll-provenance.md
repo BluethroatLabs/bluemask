@@ -6,7 +6,7 @@ only; all titles, questions and answers are accessible HTML.
 Reference: Rahul’s supplied monochrome BlueGate About scroll screenshot. No text
 or other BlueGate content was copied into the bitmap.
 
-Selected asset: `privacy-scroll.png` (1024 × 1536 RGBA). Preserved without edits.
+Selected asset: `privacy-scroll.webp` (1024 × 1536 RGBA). Preserved without edits.
 Generation artifact: `exec-8076823d-90cc-422c-9fbd-46e52eb5f669.png`
 
 ## Generation prompt

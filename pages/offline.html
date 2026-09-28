@@ -1,0 +1,45 @@
+<header class="article-header">
+  <h1>Use BlueMask offline</h1>
+  <p class="article-lead">The offline edition packages the BlueMask editor into one HTML file. It can mask and export an image without contacting a processing server.</p>
+  <p><a class="button primary" href="/BlueMask.html" download="BlueMask.html">Download the offline edition ↓</a></p>
+</header>
+
+<section>
+  <h2>Offline workflow</h2>
+  <ol class="workflow-list">
+    <li><a href="/BlueMask.html" download="BlueMask.html">Download the offline edition</a>.</li>
+    <li>Verify its SHA-256 hash against the published build manifest.</li>
+    <li>Turn off Wi-Fi and mobile data and unplug Ethernet.</li>
+    <li>Open the downloaded HTML file.</li>
+    <li>Choose the image, apply secure masks, and review every covered region at 100%.</li>
+    <li>Export and inspect the flattened PNG.</li>
+    <li>Close BlueMask before reconnecting the device.</li>
+  </ol>
+  <p>Your device controls its network connection. BlueMask cannot disconnect it for you.</p>
+  <p>Opening <code>BlueMask.html</code> directly from disk disables the offline-edition, source, manifest, and evidence downloads. Links to Bluethroat Labs and the research references remain in the file. They need a network connection, and masking does not use them. Privacy, Terms, and Support are separate pages, so those relative links are not available inside the single downloaded file.</p>
+</section>
+
+<section>
+  <h2>What offline use proves</h2>
+  <p>Successfully using the editor while disconnected demonstrates that masking and export do not require a server.</p>
+  <p>It does not prove that the BlueMask file, browser, extensions, operating system, or device is trustworthy. Review the published source and hashes when the sensitivity of the image warrants it.</p>
+  <p>The retained offline check opens this editor with browser network emulation disabled. It is not a physical radio-off test on a phone.</p>
+</section>
+
+<section>
+  <h2>Current build</h2>
+  <dl class="build-facts build-facts-wide">
+    <div><dt>Build ID</dt><dd><code>{{BUILD_ID}}</code></dd></div>
+    <div><dt>Release status</dt><dd>Release candidate · physical iPhone/Safari and Android/Chrome testing and production sign-off remain pending</dd></div>
+    <div><dt>Hosted homepage SHA-256</dt><dd><code>{{HOSTED_SHA256}}</code></dd></div>
+    <div><dt>Offline SHA-256</dt><dd><code>{{OFFLINE_SHA256}}</code></dd></div>
+    <div><dt>Renderer SHA-256</dt><dd><code>{{ENGINE_SHA256}}</code></dd></div>
+    <div><dt>Source archive SHA-256</dt><dd><code>{{SOURCE_SHA256}}</code></dd></div>
+    <div><dt>Evidence archive SHA-256</dt><dd><code>{{EVIDENCE_SHA256}}</code></dd></div>
+  </dl>
+  <p><strong>Source:</strong> <a href="https://github.com/BluethroatLabs/bluemask" target="_blank" rel="noopener noreferrer">github.com/BluethroatLabs/bluemask</a> — source available, not open source.</p>
+  <p><strong>Build manifest:</strong> <a href="/manifest.json">View the generated manifest and artifact hashes</a>.</p>
+  <p><strong>Accepted images:</strong> PNG, JPEG, or WebP, up to 35 MB (35 × 1024 × 1024 bytes), 24 megapixels, and 12,000 pixels on the longer side.</p>
+  <p><strong>Keyboard editing:</strong> add a region, change its coordinates, undo, redo, and export from the controls. Dragging to draw, move, or resize uses a pointer.</p>
+  <p><strong>Browser evidence:</strong> headless Chrome only. No retained Firefox or Safari desktop result. Phone results are emulated, not physical devices.</p>
+</section>

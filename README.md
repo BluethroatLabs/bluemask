@@ -95,7 +95,7 @@ Run BlueMask from a clone, or open the offline file, with
 4. Review coverage at **100%**, including edges and repeated sensitive details.
 5. Choose **Download PNG** and inspect the downloaded file before sharing it.
 
-Use **About** for the privacy FAQ and **Tests** for the measured recovery results.
+Use the permanent **About** page for the privacy FAQ and **Tests** for the measured recovery results.
 **Paranoia Mode** explains how to download the offline edition and disconnect the
 device before selecting an image. The website cannot disconnect the device itself.
 
@@ -123,12 +123,14 @@ gesture. Editing shortcuts are inactive while typing in a coordinate field.
   Editing is frozen while the export snapshot is encoded.
 - Clear session releases the editor's image canvases and resets its controls.
   This does not claim secure erasure of browser or operating-system memory.
-- About and Tests open separate monochrome parchment scrolls. The editor shows
-  no test results until Tests is opened. Reports, source links and file hashes
-  live in Tests; About contains expandable questions. Both work offline.
-- The ruled footer links to static Privacy, Terms and Support pages. A single
-  outer layout owns the shared navigation, BlueMask intro and attribution footer,
-  so the editor and every legal page use exactly the same site chrome.
+- About, Tests, Offline, and the screenshot-redaction guide are permanent,
+  crawlable pages whose important copy is present in the initial HTML. The
+  standalone offline edition retains built-in About and Tests dialogs. Older
+  `/privacy.html`, `/terms.html`, and `/support.html` addresses redirect to the
+  permanent policy pages, and `#about` or `#tests` on the hosted editor opens
+  the matching page.
+- The ruled footer links to the permanent guides, policies, support, source, and
+  offline download. One outer layout owns the shared navigation and attribution.
 - The centered shell stays at `width: 100%`. Its maximum width is 40rem at
   viewports of at least 40rem, 48rem at 48rem, 64rem at 64rem, 80rem at 80rem,
   and 96rem at 96rem.
@@ -148,9 +150,9 @@ gesture. Editing shortcuts are inactive while typing in a coordinate field.
 The app contains no image-upload, analytics, telemetry, cookie, IndexedDB or
 service-worker code. Its only web-storage write is the light/dark appearance
 preference stored in `localStorage` under `bluemask-theme`; image and editor state
-remain memory-only. Fonts and artwork are embedded rather than requested from
-other sites. A restrictive Content Security Policy uses hashes for its scripts
-and stylesheet and sets `connect-src 'none'`.
+remain memory-only. The hosted build loads fingerprinted fonts and artwork only
+from the same origin; the offline build embeds them. A restrictive Content
+Security Policy sets `connect-src 'none'` on the editor.
 
 Choosing a file reads it into browser memory. Export creates a new image rather
 than forwarding the original file or its filename and metadata. The engine first
@@ -221,12 +223,13 @@ environment and exact checkpoint provenance are documented in
 
 | Path | Contents |
 | --- | --- |
-| `layout.html` | Shared document head, navigation, BlueMask intro, and footer |
+| `layout.html` | Shared document head, metadata, navigation, and footer |
 | `app.html`, `app.js`, `styles.css` | Editor content, dialogs, state, interactions, and visual design |
+| `content-page.html`, `pages/` | Permanent About, Tests, Offline, and guide content |
 | `legal-page.html`, `legal/` | Shared legal article structure and page-specific content |
 | `theme-boot.js`, `theme.js` | Early appearance boot, cross-page theme toggle and preference persistence |
 | `engine.js` | Pixel replacement and cosmetic rendering |
-| `privacy-scroll.html`, `assets/` | FAQ, bundled fonts, artwork, and brand assets |
+| `offline-extras.html`, `assets/` | Offline-only dialogs, bundled fonts, artwork, and brand assets |
 | `build.py`, `serve.py` | Deterministic packaging and local static server |
 | `scripts/` | Build and browser verification |
 | `research/` | Synthetic evaluation harnesses and retained upstream source |

@@ -9,10 +9,17 @@
   function toast(message) { $('toast').textContent = message; $('toast').hidden = false; clearTimeout(toast.timer); toast.timer = setTimeout(() => { $('toast').hidden = true; }, 4500); }
   function openDialog(id) { $(id).showModal(); }
   for (const button of document.querySelectorAll('[data-close]')) button.onclick = () => button.closest('dialog').close();
-  for (const link of document.querySelectorAll('[data-scroll]')) link.onclick = e => { e.preventDefault(); openDialog('scroll-dialog'); };
-  $('tests').onclick = e => { e.preventDefault(); openDialog('tests-dialog'); };
-  if (location.hash === '#about') openDialog('scroll-dialog');
-  if (location.hash === '#tests') openDialog('tests-dialog');
+  const aboutDialog = $('scroll-dialog'), testsDialog = $('tests-dialog');
+  if (aboutDialog) $('about-nav').onclick = e => { e.preventDefault(); openDialog('scroll-dialog'); };
+  if (testsDialog) $('tests-nav').onclick = e => { e.preventDefault(); openDialog('tests-dialog'); };
+  if (location.hash === '#about') {
+    if (aboutDialog) openDialog('scroll-dialog');
+    else { location.replace('/about'); return; }
+  }
+  if (location.hash === '#tests') {
+    if (testsDialog) openDialog('tests-dialog');
+    else { location.replace('/tests'); return; }
+  }
   function method(value) {
     if (state.busy) return;
     state.method = value;
@@ -239,8 +246,19 @@
   if (location.protocol === 'file:') {
     $('offline-download').removeAttribute('href'); $('offline-download').removeAttribute('download'); $('offline-download').textContent = 'You are using the offline edition';
     $('paranoia-download').hidden = true; $('begin-offline').textContent = 'Continue with this offline edition';
-    $('source-download').removeAttribute('href'); $('source-download').removeAttribute('download'); $('source-download').textContent = 'Source and release hashes are available with the hosted edition.'; $('manifest-download').hidden = true;
-    if ($('evidence-download')) { $('evidence-download').removeAttribute('href'); $('evidence-download').removeAttribute('download'); $('evidence-download').textContent = 'For full reproduction files, download the separate evidence bundle from the hosted edition before disconnecting.'; }
+    for (const id of ['source-download', 'manifest-download', 'evidence-download']) {
+      const link = $(id); if (!link) continue; link.removeAttribute('href'); link.removeAttribute('download');
+    }
+    if ($('source-download')) $('source-download').textContent = 'Source and release hashes are available with the hosted edition.';
+    if ($('manifest-download')) $('manifest-download').hidden = true;
+    if ($('evidence-download')) $('evidence-download').textContent = 'For full reproduction files, download the separate evidence bundle from the hosted edition before disconnecting.';
+    for (const link of document.querySelectorAll('.scroll-dialog a[href^="/"]')) {
+      link.removeAttribute('href'); link.removeAttribute('download'); link.setAttribute('aria-disabled', 'true');
+    }
+    for (const link of document.querySelectorAll('.footer-links a:not([href^="https://"])')) {
+      if (link.id === 'offline-download') continue;
+      link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true');
+    }
   }
   method('secure'); refresh(); connection();
 })();

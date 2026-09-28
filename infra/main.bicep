@@ -164,6 +164,89 @@ resource headersRule 'Microsoft.Cdn/profiles/ruleSets/rules@2021-06-01' = if (de
   }
 }
 
+resource offlineHeadersRule 'Microsoft.Cdn/profiles/ruleSets/rules@2021-06-01' = if (deployFrontDoor) {
+  parent: ruleSet
+  name: 'offline-download-headers'
+  properties: {
+    order: 2
+    matchProcessingBehavior: 'Continue'
+    conditions: [
+      {
+        name: 'UrlPath'
+        parameters: {
+          typeName: 'DeliveryRuleUrlPathMatchConditionParameters'
+          operator: 'Equal'
+          negateCondition: false
+          matchValues: [
+            '/BlueMask.html'
+          ]
+          transforms: []
+        }
+      }
+    ]
+    actions: [
+      {
+        name: 'ModifyResponseHeader'
+        parameters: {
+          typeName: 'DeliveryRuleHeaderActionParameters'
+          headerAction: 'Overwrite'
+          headerName: 'X-Robots-Tag'
+          value: 'noindex'
+        }
+      }
+      {
+        name: 'ModifyResponseHeader'
+        parameters: {
+          typeName: 'DeliveryRuleHeaderActionParameters'
+          headerAction: 'Overwrite'
+          headerName: 'Content-Disposition'
+          value: 'attachment; filename="BlueMask.html"'
+        }
+      }
+    ]
+  }
+}
+
+var legacyRedirects = [
+  { name: 'redirect-privacy-html', source: '/privacy.html', target: '/privacy' }
+  { name: 'redirect-terms-html', source: '/terms.html', target: '/terms' }
+  { name: 'redirect-support-html', source: '/support.html', target: '/support' }
+]
+
+resource legacyRedirectRules 'Microsoft.Cdn/profiles/ruleSets/rules@2021-06-01' = [for (item, i) in (deployFrontDoor ? legacyRedirects : []): {
+  parent: ruleSet
+  name: item.name
+  properties: {
+    order: 3 + i
+    matchProcessingBehavior: 'Stop'
+    conditions: [
+      {
+        name: 'UrlPath'
+        parameters: {
+          typeName: 'DeliveryRuleUrlPathMatchConditionParameters'
+          operator: 'Equal'
+          negateCondition: false
+          matchValues: [
+            item.source
+          ]
+          transforms: []
+        }
+      }
+    ]
+    actions: [
+      {
+        name: 'UrlRedirect'
+        parameters: {
+          typeName: 'DeliveryRuleUrlRedirectActionParameters'
+          redirectType: 'Moved'
+          destinationProtocol: 'Https'
+          customPath: item.target
+        }
+      }
+    ]
+  }
+}]
+
 resource customDomain 'Microsoft.Cdn/profiles/customDomains@2023-05-01' = if (deployFrontDoor) {
   parent: profile
   name: customDomainName
@@ -182,6 +265,8 @@ resource route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2021-06-01' = if (dep
   dependsOn: [
     origin
     headersRule
+    offlineHeadersRule
+    legacyRedirectRules
   ]
   properties: {
     originGroup: {
@@ -198,6 +283,23 @@ resource route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2021-06-01' = if (dep
     httpsRedirect: 'Enabled'
     linkToDefaultDomain: 'Enabled'
     enabledState: 'Enabled'
+    cacheConfiguration: {
+      queryStringCachingBehavior: 'IgnoreQueryString'
+      compressionSettings: {
+        isCompressionEnabled: true
+        contentTypesToCompress: [
+          'text/html'
+          'text/css'
+          'text/javascript'
+          'application/javascript'
+          'application/json'
+          'application/manifest+json'
+          'application/xml'
+          'text/plain'
+          'image/svg+xml'
+        ]
+      }
+    }
     customDomains: [
       {
         id: customDomain.id

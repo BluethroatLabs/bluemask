@@ -62,17 +62,5 @@
   <div class="dialog-actions"><a id="paranoia-download" class="button primary" href="BlueMask.html" download="BlueMask.html">Download offline edition</a><button id="begin-offline" class="secondary" type="button">Continue on this page</button></div>
 </dialog>
 
-<dialog id="scroll-dialog" class="scroll-dialog" aria-labelledby="privacy-scroll-title"><div class="scroll-toolbar"><button data-close type="button" aria-label="Close About BlueMask">×</button></div>{{PRIVACY_SCROLL}}</dialog>
-<dialog id="tests-dialog" class="scroll-dialog" aria-labelledby="evidence-title">
-  <div class="scroll-toolbar"><button data-close type="button" aria-label="Close recovery tests">×</button></div>
-  <article class="paper-scroll tests-scroll">
-    <header class="scroll-header"><h2 id="evidence-title">Recovery tests</h2><p>Can a deblurring model recover a hidden code?</p></header>
-    <section id="evidence" class="evidence-section" aria-labelledby="evidence-title">
-      {{EVIDENCE}}
-      <div class="evidence-note"><p>Secure masking removes the covered pixels. Visible context can still reveal private details.</p></div>
-    </section>
-    <footer class="test-artifacts"><div><a id="source-download" href="bluemask-source.zip" download>Source ↓</a><a id="manifest-download" href="manifest.json" download>File hashes ↓</a></div><p>Release candidate · <code>{{BUILD_ID}}</code></p></footer>
-  </article>
-</dialog>
 <div id="toast" role="status" aria-live="polite" hidden></div>
-<!-- Font license notices accompany this self-contained edition. {{FONT_LICENSES}} -->
+<!-- Font license notices. {{FONT_LICENSES}} -->

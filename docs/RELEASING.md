@@ -11,8 +11,12 @@ python3 scripts/check_build.py
 
 | Output in `dist/` | Purpose |
 | --- | --- |
-| `index.html` | Hosted application |
-| `BlueMask.html` | Identical standalone offline edition |
+| `index.html` | Lightweight hosted editor |
+| `about`, `tests`, `offline`, `guides/...` | Permanent initial-HTML content routes |
+| `privacy.html`, `terms.html`, `support.html` | Redirects to the extensionless policy routes |
+| `assets/` | Fingerprinted hosted CSS, JavaScript, fonts, icons, and artwork |
+| `BlueMask.html` | Self-contained standalone offline edition |
+| `robots.txt`, `sitemap.xml`, `llms.txt` | Crawler and agent discovery files |
 | `bluemask-source.zip` | Source, documentation, and inputs needed to rebuild |
 | `bluemask-model-evidence.zip` | Recorded synthetic experiment and reproduction files |
 | `manifest.json` | Build ID, engine hash, and artifact SHA-256 values |
@@ -47,8 +51,9 @@ weights, or session notes. No API, database, or image-upload service is required
 
 After deployment, inspect response headers and compare served HTML with the
 intended build. Check image processing for network requests and test the downloaded
-offline edition while disconnected. A local test is not evidence about bytes
-modified by a hosting platform.
+offline edition while disconnected. Confirm immutable caching for fingerprinted
+assets, HTML revalidation, edge compression, and the offline attachment/noindex
+headers. A local test is not evidence about bytes modified by a hosting platform.
 
 Tag the reviewed commit and attach the built files to a release when publication
 is approved. The current manifest is unsigned; do not label it a signature.

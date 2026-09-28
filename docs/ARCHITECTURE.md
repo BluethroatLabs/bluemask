@@ -8,15 +8,16 @@ models and makes no server request to process an image.
 
 | File or directory | Responsibility |
 | --- | --- |
-| `layout.html` | Shared document head, navigation, product intro, and footer |
-| `app.html` | Editor, controls, native dialogs, and app-only placeholders |
+| `layout.html` | Shared document head, metadata, navigation, and footer |
+| `app.html` | Editor, controls, safety dialogs, and app-only placeholders |
+| `content-page.html`, `pages/` | Permanent About, Tests, Offline, and guide pages |
+| `offline-extras.html` | About and Tests dialogs included only in the standalone edition |
 | `legal-page.html`, `legal/` | Shared legal article structure and page-specific copy |
 | `styles.css` | Responsive layout, themes, type scale, and parchment treatment |
 | `app.js` | Image loading, editor state, gestures, consent, history, and export |
 | `engine.js` | Rectangle normalization, secure replacement, cosmetic processing |
-| `privacy-scroll.html` | About / FAQ content inserted at build time |
 | `assets/` | Locally bundled fonts, licenses, logo, and artwork |
-| `build.py` | Inline assets, CSP hashes, source archive, manifest, and checksums |
+| `build.py` | Hosted asset fingerprinting, offline inlining, metadata, source archive, manifest, and checksums |
 | `serve.py` | Loopback-only development server serving `dist/` |
 | `scripts/` | Build verification and isolated-browser checks |
 | `research/` | Optional synthetic recovery experiments and retained upstream code |
@@ -60,10 +61,20 @@ confirmation. Preview overlays and selection handles are not exported.
 
 ## Build and network boundary
 
-`build.py` embeds CSS, JavaScript, fonts, icons, artwork, FAQ, and displayed evidence
-images. It emits identical `index.html` and `BlueMask.html` bytes. Its CSP allows
-the exact script/style hashes and local data/blob images, and uses
-`connect-src 'none'`. The app has no storage, service worker, or telemetry feature.
+`build.py` emits two packages from the same sources. Hosted pages use shared,
+content-addressed CSS, JavaScript, fonts, icons, and artwork with same-origin CSP.
+`BlueMask.html` embeds those resources and its About and Tests dialogs into one
+standalone file. Both editor packages use `connect-src 'none'`; the application
+has no image upload, service worker, or telemetry feature.
+
+Hosted routes are extensionless static artifacts so `/about`, `/tests`, `/offline`,
+the guide, and the policy routes work without client rendering. Previous
+`/privacy.html`, `/terms.html`, and `/support.html` addresses redirect to the
+extensionless routes. On the hosted editor, `#about` and `#tests` open those
+permanent pages; the offline file still opens its built-in dialogs. Front Door
+compresses eligible text responses. Fingerprinted assets are immutable; HTML
+revalidates. The offline response adds attachment and `noindex` headers. A
+deploy removes storage blobs that the current `dist/` no longer contains.
 
 Explicit navigation and downloads are separate from image processing: the brand
 link opens Bluethroat's website, and hosted artifact links request static files.

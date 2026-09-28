@@ -1,0 +1,68 @@
+<header class="article-header">
+  <h1 id="offline-tests-title">BlueMask recovery tests and limitations</h1>
+  <p class="article-lead">Can a published image-restoration model recover a hidden synthetic code?</p>
+  <p>BlueMask tested twelve synthetic eight-digit codes, rendered in one font at one size, with the same mask position on every image. The experiment compared generated Gaussian blur with PNGs produced by BlueMask's secure-masking renderer.</p>
+  <dl class="build-facts">
+    <div><dt>Tested</dt><dd>6 September 2026</dd></div>
+    <div><dt>Current build</dt><dd><code>{{BUILD_ID}}</code></dd></div>
+    <div><dt>Release status</dt><dd>Release candidate · 25 September 2026</dd></div>
+  </dl>
+  <p><a class="button primary" href="/bluemask-model-evidence.zip" download>Download tests and outputs ↓</a></p>
+</header>
+
+<section>
+  <h2>DPIR / DRUNet result</h2>
+  <div class="table-scroll"><table class="evidence-table">
+    <caption>Exact synthetic codes read before and after restoration</caption>
+    <thead><tr><th>Input</th><th>Before restoration</th><th>After restoration</th></tr></thead>
+    <tbody>
+      <tr><th>Unredacted control</th><td>12 / 12</td><td>Not applicable</td></tr>
+      <tr><th>Gaussian blur, sigma 3</th><td>9 / 12</td><td>12 / 12</td></tr>
+      <tr><th>BlueMask secure mask</th><td>0 / 12</td><td>0 / 12</td></tr>
+    </tbody>
+  </table></div>
+  <p>DPIR with DRUNet grayscale is a published 2021 baseline. For the blur controls, it was given the same Gaussian kernel that created the blur. It recovered every tested code from the sigma 3 Gaussian control after restoration. It did not recover the known codes from the secure-mask inputs under the same reported settings.</p>
+  <p>The sigma 3 row is the informative blur control. A sigma 2 Gaussian control was already 12 / 12 before restoration and 12 / 12 after. Both controls are generated Gaussian blur. They are not BlueMask's cosmetic blur, which is three passes of a box filter. DPIR was not run on cosmetic-blur exports.</p>
+  <p>The unredacted images were not sent through DPIR. Their “after restoration” cell is not applicable.</p>
+</section>
+
+<section>
+  <h2>Why this is not twelve independent secure-mask challenges</h2>
+  <p>The twelve secure exports were byte-identical. The selected region was replaced with the same fixed pixels at the same position, so the restoration model received one repeated secure-mask input. Identical inputs were processed once for each assumed kernel and reused.</p>
+  <p>This supports the claim that those published pixels did not distinguish the twelve tested originals. It is one repeated masked input, not twelve independent adversarial tests.</p>
+</section>
+
+<section>
+  <h2>DarkIR result</h2>
+  <p>DarkIR, a 2025 low-light restoration model, was run on the same fixtures. On the sigma 3 Gaussian control, exact reads fell from 9 / 12 to 0 / 12. Its failure on the secure masks is therefore not evidence that it mounted a capable recovery attempt against them.</p>
+  <p>The failed control remains in the evidence package. It is not presented as a BlueMask success, and it is excluded from any strong resistance claim.</p>
+</section>
+
+<section>
+  <h2>What the experiment does not establish</h2>
+  <ul>
+    <li>every current or future model, including frontier models that were not run</li>
+    <li>face recognition or face reconstruction</li>
+    <li>real documents and photographs</li>
+    <li>pixelation, inpainting, or dictionary search</li>
+    <li>BlueMask's own cosmetic blur</li>
+    <li>information left outside the mask</li>
+    <li>context, reflections, logos, timestamps, or mask geometry</li>
+    <li>guesses constructed from external information</li>
+    <li>several differently masked versions of the same image</li>
+  </ul>
+  <p>OCR failure does not prove that no information remains. A human or a different model may still read something the OCR measurement missed. Review the fixtures, outputs, transcriptions, model provenance, hashes, and reproduction instructions in the evidence archive.</p>
+  <p>The archive does not include model weights. Repeating the model run requires the checkpoints and local environment named there. The secure-mask renderer in this build matches the renderer that produced the fixtures. One harness file in the current repository, <code>scripts/browser.mjs</code>, has changed since the archive was packaged, so packing the archive again from the current repository would not reproduce its hash.</p>
+</section>
+
+<section>
+  <h2>Downloads and verification</h2>
+  <ul class="download-list">
+    <li><a id="evidence-download" href="/bluemask-model-evidence.zip" download>Download the model-evidence archive</a></li>
+    <li><a id="source-download" href="/bluemask-source.zip" download>Download the source archive</a></li>
+    <li><a id="manifest-download" href="/manifest.json">Build manifest and hashes</a></li>
+    <li><a href="https://github.com/BluethroatLabs/bluemask" target="_blank" rel="noopener noreferrer">Public source repository</a></li>
+  </ul>
+  <p>Changelog: no public changelog or GitHub release is published.</p>
+  <p class="article-note">Source available. No license has been selected for the application or the evidence dataset. Do not call either one open source. Bundled fonts remain under their SIL Open Font License. Retained upstream model code keeps its own license notices.</p>
+</section>

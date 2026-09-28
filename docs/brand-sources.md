@@ -77,7 +77,8 @@ Instrument Serif / Geist Mono fallback metrics. Scroll emphasis uses weight 600.
 The fragment describes the locally tested implementation. The release remains a
 candidate; the scope and limits of model evidence are stated with the results.
 Rahul’s 2026-09-07 design correction replaces rhetorical copy with direct wording
-and the editorial dialog with a literal monochrome parchment scroll.
+and the editorial reading pages with a literal monochrome parchment scroll. The
+standalone offline edition keeps the same treatment in its built-in dialogs.
 
 - Gaussian filter definition: https://drafts.csswg.org/filter-effects/#feGaussianBlurElement
 - Restormer, CVPR 2022: https://arxiv.org/abs/2111.09881
