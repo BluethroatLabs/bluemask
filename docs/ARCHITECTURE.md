@@ -68,9 +68,13 @@ standalone file. Both editor packages use `connect-src 'none'`; the application
 has no image upload, service worker, or telemetry feature.
 
 Hosted routes are extensionless static artifacts so `/about`, `/tests`, `/offline`,
-the guide, and the policy routes work without client rendering. Front Door
+the guide, and the policy routes work without client rendering. Previous
+`/privacy.html`, `/terms.html`, and `/support.html` addresses redirect to the
+extensionless routes. On the hosted editor, `#about` and `#tests` open those
+permanent pages; the offline file still opens its built-in dialogs. Front Door
 compresses eligible text responses. Fingerprinted assets are immutable; HTML
-revalidates. The offline response adds attachment and `noindex` headers.
+revalidates. The offline response adds attachment and `noindex` headers. A
+deploy removes storage blobs that the current `dist/` no longer contains.
 
 Explicit navigation and downloads are separate from image processing: the brand
 link opens Bluethroat's website, and hosted artifact links request static files.

@@ -49,6 +49,25 @@ def check_build():
             raise RuntimeError(f'Offline page does not show the generated hash for {artifact}')
     if '{{' in ''.join((dist / name).read_text() for name in required_pages):
         raise RuntimeError('A permanent page contains an unresolved build placeholder')
+    if 'SIL Open Font License' not in hosted or 'SIL Open Font License' not in offline:
+        raise RuntimeError('Font license notices are missing from an editor package')
+    legacy_redirects = {'privacy.html': '/privacy', 'terms.html': '/terms', 'support.html': '/support'}
+    redirects_file = (dist / '_redirects').read_text()
+    server = (ROOT / 'serve.py').read_text()
+    bicep = (ROOT / 'infra' / 'main.bicep').read_text()
+    app_source = (ROOT / 'app.js').read_text()
+    for filename, target in legacy_redirects.items():
+        page = (dist / filename).read_text()
+        if f'url={target}' not in page or f'href="https://bluemask.bluethroatlabs.com{target}"' not in page or '<header class="topbar">' in page:
+            raise RuntimeError(f'Legacy address is not a redirect: {filename}')
+        if f'/{filename} {target} 301' not in redirects_file:
+            raise RuntimeError(f'Static redirect file is missing {filename}')
+        if f"'/{filename}': '{target}'" not in server:
+            raise RuntimeError(f'serve.py does not redirect /{filename}')
+        if f"source: '/{filename}'" not in bicep or f"target: '{target}'" not in bicep:
+            raise RuntimeError(f'Front Door does not redirect /{filename}')
+    if "location.replace('/about')" not in app_source or "location.replace('/tests')" not in app_source:
+        raise RuntimeError('Hosted editor does not forward legacy About and Tests hashes')
     expected_sums = ''.join(f'{v}  {k}\n' for k, v in sorted(manifest['artifacts'].items()))
     if (dist / 'SHA256SUMS').read_text() != expected_sums:
         raise RuntimeError('SHA256SUMS does not match the manifest')

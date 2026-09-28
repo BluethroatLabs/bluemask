@@ -4,9 +4,34 @@ import argparse
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+LEGACY_REDIRECTS = {
+    '/privacy.html': '/privacy',
+    '/terms.html': '/terms',
+    '/support.html': '/support',
+}
+
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(Path(__file__).parent / 'dist'), **kwargs)
+
+    def send_legacy_redirect(self):
+        target = LEGACY_REDIRECTS.get(self.path.split('?', 1)[0])
+        if not target:
+            return False
+        self.send_response(301)
+        self.send_header('Location', target)
+        self.end_headers()
+        return True
+
+    def do_GET(self):
+        if self.send_legacy_redirect():
+            return
+        super().do_GET()
+
+    def do_HEAD(self):
+        if self.send_legacy_redirect():
+            return
+        super().do_HEAD()
 
     def guess_type(self, path):
         target = Path(path)

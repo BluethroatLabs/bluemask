@@ -50,14 +50,25 @@ az storage blob upload-batch \
   --overwrite \
   --output none
 
-az storage blob delete \
-  "${AUTH[@]}" \
-  --container-name '$web' \
-  --name _headers \
-  --output none \
-  || true
+keep_file="$(mktemp)"
+(
+  cd "$ROOT/dist"
+  find . -type f ! -name '_headers' ! -name '_redirects' -print | sed 's|^\./||' | sort
+) > "$keep_file"
+while IFS= read -r blob; do
+  [ -n "$blob" ] || continue
+  if ! grep -Fxq -- "$blob" "$keep_file"; then
+    echo "Removing stale blob ${blob}"
+    az storage blob delete \
+      "${AUTH[@]}" \
+      --container-name '$web' \
+      --name "$blob" \
+      --output none
+  fi
+done < <(az storage blob list "${AUTH[@]}" --container-name '$web' --query '[].name' --output tsv)
+rm -f "$keep_file"
 
-for page in index.html BlueMask.html about tests offline guides/redact-sensitive-information-from-screenshots privacy terms support; do
+for page in index.html privacy.html terms.html support.html about tests offline guides/redact-sensitive-information-from-screenshots privacy terms support; do
   az storage blob update \
     "${AUTH[@]}" \
     --container-name '$web' \
@@ -71,23 +82,16 @@ az storage blob update \
   "${AUTH[@]}" \
   --container-name '$web' \
   --name BlueMask.html \
+  --content-type 'text/html; charset=utf-8' \
   --content-disposition 'attachment; filename="BlueMask.html"' \
   --content-cache-control 'public, max-age=0, must-revalidate' \
   --output none
 
-for page in robots.txt llms.txt sitemap.xml manifest.json SHA256SUMS; do
-  az storage blob update \
-    "${AUTH[@]}" \
-    --container-name '$web' \
-    --name "$page" \
-    --content-cache-control 'public, max-age=0, must-revalidate' \
-    --output none
-done
-
-az storage blob update "${AUTH[@]}" --container-name '$web' --name llms.txt --content-type 'text/plain; charset=utf-8' --output none
-az storage blob update "${AUTH[@]}" --container-name '$web' --name robots.txt --content-type 'text/plain; charset=utf-8' --output none
-az storage blob update "${AUTH[@]}" --container-name '$web' --name SHA256SUMS --content-type 'text/plain; charset=utf-8' --output none
-az storage blob update "${AUTH[@]}" --container-name '$web' --name sitemap.xml --content-type 'application/xml; charset=utf-8' --output none
+az storage blob update "${AUTH[@]}" --container-name '$web' --name llms.txt --content-type 'text/plain; charset=utf-8' --content-cache-control 'public, max-age=0, must-revalidate' --output none
+az storage blob update "${AUTH[@]}" --container-name '$web' --name robots.txt --content-type 'text/plain; charset=utf-8' --content-cache-control 'public, max-age=0, must-revalidate' --output none
+az storage blob update "${AUTH[@]}" --container-name '$web' --name SHA256SUMS --content-type 'text/plain; charset=utf-8' --content-cache-control 'public, max-age=0, must-revalidate' --output none
+az storage blob update "${AUTH[@]}" --container-name '$web' --name sitemap.xml --content-type 'application/xml; charset=utf-8' --content-cache-control 'public, max-age=0, must-revalidate' --output none
+az storage blob update "${AUTH[@]}" --container-name '$web' --name manifest.json --content-type 'application/json; charset=utf-8' --content-cache-control 'public, max-age=0, must-revalidate' --output none
 
 while IFS= read -r asset; do
   blob="${asset#"$ROOT/dist/"}"

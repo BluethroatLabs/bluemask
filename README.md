@@ -125,7 +125,10 @@ gesture. Editing shortcuts are inactive while typing in a coordinate field.
   This does not claim secure erasure of browser or operating-system memory.
 - About, Tests, Offline, and the screenshot-redaction guide are permanent,
   crawlable pages whose important copy is present in the initial HTML. The
-  standalone offline edition retains built-in About and Tests dialogs.
+  standalone offline edition retains built-in About and Tests dialogs. Older
+  `/privacy.html`, `/terms.html`, and `/support.html` addresses redirect to the
+  permanent policy pages, and `#about` or `#tests` on the hosted editor opens
+  the matching page.
 - The ruled footer links to the permanent guides, policies, support, source, and
   offline download. One outer layout owns the shared navigation and attribution.
 - The centered shell stays at `width: 100%`. Its maximum width is 40rem at

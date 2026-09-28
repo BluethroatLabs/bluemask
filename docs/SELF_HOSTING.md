@@ -62,6 +62,7 @@ OFL notices.
 | --- | --- |
 | `index.html` | Lightweight hosted editor |
 | `about`, `tests`, `offline`, `guides/...` | Permanent initial-HTML content routes |
+| `privacy.html`, `terms.html`, `support.html` | Redirects to the extensionless policy routes |
 | `assets/` | Fingerprinted hosted CSS, JavaScript, fonts, icons, and artwork |
 | `BlueMask.html` | Self-contained standalone offline edition |
 | `robots.txt`, `sitemap.xml`, `llms.txt` | Crawler and agent discovery files |

@@ -12,8 +12,14 @@
   const aboutDialog = $('scroll-dialog'), testsDialog = $('tests-dialog');
   if (aboutDialog) $('about-nav').onclick = e => { e.preventDefault(); openDialog('scroll-dialog'); };
   if (testsDialog) $('tests-nav').onclick = e => { e.preventDefault(); openDialog('tests-dialog'); };
-  if (location.hash === '#about' && aboutDialog) openDialog('scroll-dialog');
-  if (location.hash === '#tests' && testsDialog) openDialog('tests-dialog');
+  if (location.hash === '#about') {
+    if (aboutDialog) openDialog('scroll-dialog');
+    else { location.replace('/about'); return; }
+  }
+  if (location.hash === '#tests') {
+    if (testsDialog) openDialog('tests-dialog');
+    else { location.replace('/tests'); return; }
+  }
   function method(value) {
     if (state.busy) return;
     state.method = value;

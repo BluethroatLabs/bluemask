@@ -219,7 +219,7 @@ def build():
         })
 
     app_values = {
-        **hosted_marks, 'FONT_LICENSES': '', 'BUILD_ID': build_id,
+        **hosted_marks, 'FONT_LICENSES': licenses, 'BUILD_ID': build_id,
     }
     home_content = render(app_content, app_values)
     home_extras = render(app_extras, app_values)
@@ -341,6 +341,18 @@ def build():
     for slug, (title, description, source) in legal_pages.items():
         content = render(legal_template, {'LEGAL_TITLE': title.split(' | ')[0], 'LEGAL_BODY': source.read_text()})
         (OUT / slug).write_text(hosted_page(title=title, description=description, canonical=f'{ORIGIN}/{slug}', content=content))
+
+    legacy_redirects = {'privacy.html': '/privacy', 'terms.html': '/terms', 'support.html': '/support'}
+    for filename, target in legacy_redirects.items():
+        (OUT / filename).write_text(
+            '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+            '<meta name="robots" content="noindex">\n'
+            f'<meta http-equiv="refresh" content="0; url={target}">\n'
+            f'<link rel="canonical" href="{ORIGIN}{target}">\n'
+            '<title>Moved</title>\n</head>\n<body>\n'
+            f'<p><a href="{target}">Continue</a></p>\n</body>\n</html>\n'
+        )
+    (OUT / '_redirects').write_text(''.join(f'/{filename} {target} 301\n' for filename, target in legacy_redirects.items()))
 
     (OUT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n')
     (OUT / 'llms.txt').write_text((ROOT / 'llms.txt').read_text())
