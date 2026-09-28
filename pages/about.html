@@ -1,0 +1,56 @@
+<header class="article-header">
+  <h1 id="offline-about-title">About BlueMask</h1>
+  <p class="article-lead">BlueMask is a local image-redaction tool for photos and screenshots. It runs in your browser and does not upload the image.</p>
+  <p>Use <strong>Secure masking</strong> for sensitive data. It replaces the covered pixels with one fixed, opaque color. The color does not depend on the hidden image. <strong>Cosmetic blur</strong> is an appearance effect and may leave recoverable information behind.</p>
+</header>
+
+<section>
+  <h2>Why isn't ordinary blur enough?</h2>
+  <p>Blur mixes neighboring pixels together. A name can look unreadable while still leaving shapes and measurements that software can use to reconstruct or rank possible originals.</p>
+  <p>Deblurring models can also produce plausible guesses that are not the original. A sharp-looking reconstruction should not automatically be treated as ground truth.</p>
+</section>
+
+<section>
+  <h2>What makes secure masking different?</h2>
+  <p>Secure masking replaces the selected pixels with one fixed opaque color. BlueMask removes those pixels before cosmetic processing and paints the secure masks again last, so they take priority wherever they overlap cosmetic blur. The export is a new flattened PNG with no separate mask layer to remove.</p>
+  <p>For fixed mask positions and unchanged visible surroundings, changing pixels beneath a secure mask does not change the exported result.</p>
+</section>
+
+<section>
+  <h2>Does my image leave my device?</h2>
+  <p>BlueMask reads, edits, and exports images in the browser. The editor has no image upload, analytics, telemetry, account, cookie, IndexedDB, service worker, or remote AI call. It does not load remote fonts or third-party scripts while running. The only value it writes is the light or dark appearance preference, under the <code>localStorage</code> key <code>bluemask-theme</code>. The image and editor state stay in memory.</p>
+  <p>Opening the hosted website still connects the browser to the BlueMask host. The host can see ordinary connection data, such as an IP address and the time of the request. Loading the hosted page also requests same-origin favicons and the web app manifest. A link or download you choose is a separate request. That includes Bluethroat Labs, research references, GitHub, Privacy, Terms, Support, the offline file, the source archive, the evidence archive, and the build manifest.</p>
+  <p>Clear session releases the editor's canvases and resets its controls. It does not erase copies kept by the browser, the operating system, a download, or a backup.</p>
+  <p>For sensitive images, <a href="/offline">download the offline edition</a> and disconnect the device before choosing an image.</p>
+</section>
+
+<section>
+  <h2>Why does Paranoia Mode exist?</h2>
+  <p>Paranoia Mode gives you a workflow in which the editor can be used while the device is disconnected. A webpage cannot disable the device's network connection for you. The browser's online indicator is only a hint.</p>
+  <p>Download the offline edition, disconnect Wi-Fi and mobile data, unplug Ethernet, open the file, mask and export the image, inspect the export, and close BlueMask before reconnecting.</p>
+</section>
+
+<section>
+  <h2>Does working offline prove BlueMask is trustworthy?</h2>
+  <p>Working offline demonstrates that image editing does not require a server. It does not prove that the code, browser, extensions, operating system, or device is trustworthy.</p>
+  <p>BlueMask publishes its source, recorded tests, build identifier, and file hashes as additional evidence. Hashes identify exact files. They do not certify their safety. The build manifest is not a signature.</p>
+</section>
+
+<section>
+  <h2>What happens to filenames and metadata?</h2>
+  <p>BlueMask creates a new PNG and gives the download the name <code>bluemask.png</code>. Transparent areas are flattened onto white, so the exported PNG is opaque. The export keeps the edited image's width and height. It does not copy the original filename, camera details, GPS metadata, or color profile. The file you opened is left unchanged.</p>
+  <p>Anything still visible in the image must be covered separately.</p>
+</section>
+
+<section>
+  <h2>Can someone still identify what I hid?</h2>
+  <p>Yes, from context. A mask's width can suggest the length of a name. Nearby text, reflections, timestamps, logos, repeated details, and differently masked copies can reveal information.</p>
+  <p>Cover the complete detail with room around its edges. Sometimes covering an entire line reveals less than tightly covering one word. Review the final export at 100% before sharing it.</p>
+</section>
+
+<section>
+  <h2>What do the recovery tests establish?</h2>
+  <p>BlueMask publishes a narrow synthetic experiment comparing generated Gaussian blur with secure masking. The experiment demonstrates the reported behavior for those fixtures, model settings, and measurements. It does not prove protection against every model, image, face-recognition system, or contextual guess.</p>
+  <p class="article-links"><a href="/tests">Read the recovery tests and limitations</a><a href="/offline">Use BlueMask offline</a><a href="https://github.com/BluethroatLabs/bluemask" target="_blank" rel="noopener noreferrer">View the source</a></p>
+  <p class="article-note">Source is available. No project license has been selected, so this is not an open-source release.</p>
+</section>

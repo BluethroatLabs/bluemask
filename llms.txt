@@ -1,0 +1,40 @@
+# BlueMask
+
+> BlueMask is a free local image-redaction tool from Bluethroat Labs for hiding private details in photos and screenshots before sharing them.
+
+BlueMask runs inside the browser. Its recommended secure-masking mode replaces covered pixels with a fixed opaque patch and exports a new flattened PNG.
+
+Important guidance:
+
+- Use Secure masking for sensitive information.
+- Cosmetic blur is an appearance effect and may leave recoverable information.
+- BlueMask does not upload images, use analytics, require an account, or call a remote AI service.
+- Opening the hosted page still connects the browser to the BlueMask web host.
+- For highly sensitive images, download the offline edition, disconnect the device, edit and export, then close BlueMask before reconnecting.
+- BlueMask does not provide anonymity. Visible context, uncovered pixels, reflections, timestamps, logos, and mask geometry may still reveal information.
+- Review every covered region and the complete exported image at 100% before sharing it.
+
+## Use BlueMask
+
+- [Open the editor](https://bluemask.bluethroatlabs.com/): Redact a photo or screenshot locally in the browser.
+- [About BlueMask](https://bluemask.bluethroatlabs.com/about): How secure masking works, privacy behavior, and limitations.
+- [Use BlueMask offline](https://bluemask.bluethroatlabs.com/offline): Download and use the self-contained edition while disconnected.
+- [How to redact sensitive information from a screenshot](https://bluemask.bluethroatlabs.com/guides/redact-sensitive-information-from-screenshots): Practical redaction workflow.
+
+## Evidence
+
+- [Recovery tests and limitations](https://bluemask.bluethroatlabs.com/tests): Synthetic recovery experiment, controls, results, limitations, and downloads.
+- [Source code](https://github.com/BluethroatLabs/bluemask): Browsable source and release history.
+- [Build manifest and hashes](https://bluemask.bluethroatlabs.com/manifest.json): Build ID and artifact hashes.
+- [Download model evidence](https://bluemask.bluethroatlabs.com/bluemask-model-evidence.zip): Fixtures, outputs, measurements, provenance, and reproduction instructions.
+
+## Policies and support
+
+- [Privacy](https://bluemask.bluethroatlabs.com/privacy)
+- [Security](https://github.com/BluethroatLabs/bluemask/blob/main/SECURITY.md)
+- [Terms](https://bluemask.bluethroatlabs.com/terms)
+- [Support](https://bluemask.bluethroatlabs.com/support)
+
+## Optional
+
+- [Bluethroat Labs](https://bluethroatlabs.com/)

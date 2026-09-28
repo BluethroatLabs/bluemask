@@ -19,7 +19,7 @@ only. After editing source, rebuild and refresh the browser. There is no
 directly loses changes on the next build.
 
 `dist/BlueMask.html` is a self-contained offline edition: HTML, CSS,
-JavaScript, fonts, artwork, FAQ and displayed benchmark images are embedded.
+JavaScript, fonts, artwork, About, and Tests are embedded.
 Open the file directly; no localhost server, installation or service worker is
 needed.
 
@@ -53,14 +53,18 @@ not run the macOS browser suites or repeat the AI experiments.
 ## Publish a static copy
 
 `build.py` is deterministic for a fixed source tree and recorded model evidence.
-It emits identical hosted and offline HTML, a SHA-256 manifest, a hash list and
-static hosting header configuration. The bundled fonts retain their complete OFL
-notices.
+It emits lightweight hosted pages with shared fingerprinted assets, a separate
+self-contained offline editor, a SHA-256 manifest, a hash list, crawler files,
+and static hosting header configuration. The bundled fonts retain their complete
+OFL notices.
 
 | Output in `dist/` | Purpose |
 | --- | --- |
-| `index.html` | Hosted application |
-| `BlueMask.html` | Identical standalone offline edition |
+| `index.html` | Lightweight hosted editor |
+| `about`, `tests`, `offline`, `guides/...` | Permanent initial-HTML content routes |
+| `assets/` | Fingerprinted hosted CSS, JavaScript, fonts, icons, and artwork |
+| `BlueMask.html` | Self-contained standalone offline edition |
+| `robots.txt`, `sitemap.xml`, `llms.txt` | Crawler and agent discovery files |
 | `bluemask-source.zip` | Source, documentation, and inputs needed to rebuild |
 | `bluemask-model-evidence.zip` | Recorded synthetic experiment and reproduction files |
 | `manifest.json` | Build ID, engine hash, and artifact SHA-256 values |

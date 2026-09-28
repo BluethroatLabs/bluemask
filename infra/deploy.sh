@@ -57,15 +57,47 @@ az storage blob delete \
   --output none \
   || true
 
-for page in index.html BlueMask.html; do
+for page in index.html BlueMask.html about tests offline guides/redact-sensitive-information-from-screenshots privacy terms support; do
   az storage blob update \
     "${AUTH[@]}" \
     --container-name '$web' \
     --name "$page" \
     --content-type 'text/html; charset=utf-8' \
-    --content-cache-control 'no-store' \
+    --content-cache-control 'public, max-age=0, must-revalidate' \
     --output none
 done
+
+az storage blob update \
+  "${AUTH[@]}" \
+  --container-name '$web' \
+  --name BlueMask.html \
+  --content-disposition 'attachment; filename="BlueMask.html"' \
+  --content-cache-control 'public, max-age=0, must-revalidate' \
+  --output none
+
+for page in robots.txt llms.txt sitemap.xml manifest.json SHA256SUMS; do
+  az storage blob update \
+    "${AUTH[@]}" \
+    --container-name '$web' \
+    --name "$page" \
+    --content-cache-control 'public, max-age=0, must-revalidate' \
+    --output none
+done
+
+az storage blob update "${AUTH[@]}" --container-name '$web' --name llms.txt --content-type 'text/plain; charset=utf-8' --output none
+az storage blob update "${AUTH[@]}" --container-name '$web' --name robots.txt --content-type 'text/plain; charset=utf-8' --output none
+az storage blob update "${AUTH[@]}" --container-name '$web' --name SHA256SUMS --content-type 'text/plain; charset=utf-8' --output none
+az storage blob update "${AUTH[@]}" --container-name '$web' --name sitemap.xml --content-type 'application/xml; charset=utf-8' --output none
+
+while IFS= read -r asset; do
+  blob="${asset#"$ROOT/dist/"}"
+  az storage blob update \
+    "${AUTH[@]}" \
+    --container-name '$web' \
+    --name "$blob" \
+    --content-cache-control 'public, max-age=31536000, immutable' \
+    --output none
+done < <(find "$ROOT/dist/assets" "$ROOT/dist/og" -type f -print)
 
 echo "Checking origin ${ORIGIN_URL}..."
 curl -fsS -o /dev/null --max-time 30 "${ORIGIN_URL}"
@@ -109,7 +141,7 @@ BlueMask is a static site on Microsoft.Storage. Front Door is Microsoft.Cdn
 (profile, endpoint, origin group, origin, route, and header rule set).
 The current policy allows Storage and Container Apps, but denies Microsoft.Cdn.
 
-If you would rather list types, as in the BlueSkills ACI policy, allow:
+If you would rather list resource types explicitly, allow:
 
   Microsoft.Cdn/profiles
   Microsoft.Cdn/profiles/afdendpoints

@@ -19,8 +19,36 @@ def check_build():
         actual = hashlib.sha256((dist / name).read_bytes()).hexdigest()
         if actual != expected:
             raise RuntimeError(f'Artifact checksum mismatch: {name}')
-    if (dist / 'index.html').read_bytes() != (dist / 'BlueMask.html').read_bytes():
-        raise RuntimeError('Hosted and offline editions differ')
+    hosted = (dist / 'index.html').read_text()
+    offline = (dist / 'BlueMask.html').read_text()
+    if hosted == offline:
+        raise RuntimeError('Hosted and offline editions must use separate packaging')
+    if len(hosted.encode()) >= 250_000 or 'data:font/' in hosted or 'privacy-scroll.webp' in hosted:
+        raise RuntimeError('Hosted editor still contains self-contained offline assets')
+    if '/assets/' not in hosted or '<script src="/assets/' not in hosted:
+        raise RuntimeError('Hosted editor does not use fingerprinted shared assets')
+    if '/assets/' in offline or '<link rel="stylesheet"' in offline:
+        raise RuntimeError('Offline edition contains external asset references')
+    required_pages = {
+        'about': ('<h1', 'About BlueMask', f'<link rel="canonical" href="https://bluemask.bluethroatlabs.com/about">'),
+        'tests': ('<h1', 'BlueMask recovery tests and limitations', f'<link rel="canonical" href="https://bluemask.bluethroatlabs.com/tests">'),
+        'offline': ('<h1', 'Use BlueMask offline', f'<link rel="canonical" href="https://bluemask.bluethroatlabs.com/offline">'),
+        'guides/redact-sensitive-information-from-screenshots': ('<h1', 'How to redact sensitive information from a screenshot', '<meta property="og:type" content="article">'),
+    }
+    for name, needles in required_pages.items():
+        text = (dist / name).read_text()
+        if any(needle not in text for needle in needles):
+            raise RuntimeError(f'Permanent page is incomplete: {name}')
+    branded_pages = ['index.html', 'BlueMask.html', *required_pages, 'privacy', 'terms', 'support']
+    for name in branded_pages:
+        if '<header class="topbar">' not in (dist / name).read_text() or '<header class="productbar">' not in (dist / name).read_text():
+            raise RuntimeError(f'Page is missing shared company or product branding: {name}')
+    offline_page = (dist / 'offline').read_text()
+    for artifact in ['index.html', 'BlueMask.html', 'bluemask-source.zip', 'bluemask-model-evidence.zip']:
+        if manifest['artifacts'][artifact] not in offline_page:
+            raise RuntimeError(f'Offline page does not show the generated hash for {artifact}')
+    if '{{' in ''.join((dist / name).read_text() for name in required_pages):
+        raise RuntimeError('A permanent page contains an unresolved build placeholder')
     expected_sums = ''.join(f'{v}  {k}\n' for k, v in sorted(manifest['artifacts'].items()))
     if (dist / 'SHA256SUMS').read_text() != expected_sums:
         raise RuntimeError('SHA256SUMS does not match the manifest')
@@ -36,7 +64,7 @@ def check_build():
         for name in [*manifest['artifacts'], 'manifest.json', 'SHA256SUMS']:
             if (dist / name).read_bytes() != (target / 'dist' / name).read_bytes():
                 raise RuntimeError(f'Source archive rebuild differs: {name}')
-    print('PASS checksums, hosted/offline parity, and source archive reproduction')
+    print('PASS checksums, hosted/offline split, permanent pages, and source archive reproduction')
 
 
 if __name__ == '__main__':

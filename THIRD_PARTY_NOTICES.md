@@ -12,7 +12,7 @@ not grant a license to Bluethroat's trademarks or other first-party assets.
 | DarkIR architecture and configuration | `research/darkir/` | [MIT](research/darkir/LICENSE); commit in [source record](research/darkir-source.json) |
 | Concertormer candidate source and configurations | `research/concertormer/` | Preserve the complete [upstream license file](research/concertormer/LICENSE), including its MIT and BasicSR Apache notices; candidate was not run |
 | Bluethroat bird, wordmark, engraving | `assets/` | First-party brand assets; [source record](docs/brand-sources.md) and [wordmark record](assets/bluethroat-wordmark-provenance.md) |
-| Monochrome parchment | `assets/privacy-scroll.png` | [Generation provenance](assets/privacy-scroll-provenance.md) |
+| Monochrome parchment | `assets/privacy-scroll.webp` | [Generation provenance](assets/privacy-scroll-provenance.md) |
 
 The browser application does not run the research models. Model weights and
 Python dependencies are downloaded separately for research and are not committed

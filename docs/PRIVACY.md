@@ -21,9 +21,10 @@ were never selected. Review the downloaded image at full size before sharing it.
 
 Selected files are decoded and edited in browser memory. The original is retained
 while editing to support preview and changes. There is no application feature for
-uploading, tracking, storing images, or saving editing sessions. Fonts and artwork
-are embedded. PNG export uses a fresh canvas, a generic filename, and does not
-copy original metadata. The source file on disk is unchanged.
+uploading, tracking, storing images, or saving editing sessions. Hosted fonts and
+artwork are same-origin static assets; the standalone edition embeds them. PNG
+export uses a fresh canvas, a generic filename, and does not copy original
+metadata. The source file on disk is unchanged.
 
 Clearing a session releases the application's canvases and state. It is not a
 claim of forensic erasure from browser memory, swap, backups, or the operating

@@ -1,13 +1,13 @@
 {
-  "tested_at": "2026-09-25T08:48:57.154Z",
+  "tested_at": "2026-09-28T17:16:53.004Z",
   "browser": {
     "protocolVersion": "1.3",
-    "product": "Chrome/153.0.8010.47",
-    "revision": "@73934a44f61e6b3878d1943064c141a5a820f5f7",
-    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-    "jsVersion": "15.3.76.12"
+    "product": "Chrome/154.0.8037.57",
+    "revision": "@73c14f6228d7cd537c855007e8f88678969cc0eb",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.11"
   },
-  "html_sha256": "ed09510e0fb03b1f7a1cfcbaeba1b3e798b872a84d7ad4575f57ff31abad48fd",
+  "html_sha256": "7dbd7dcec29062a771943512695bb6ce53383834c07f479c3e8d983756e3d98d",
   "checks": [
     {
       "name": "Appearance preference survives a reload",
@@ -74,11 +74,23 @@
       "pass": true
     },
     {
-      "name": "Legal pages use the exact editor header, intro and footer",
+      "name": "Product branding follows the company header",
       "pass": true
     },
     {
-      "name": "Footer policy links open a real BlueMask page",
+      "name": "Product branding has no visual hover effect",
+      "pass": true
+    },
+    {
+      "name": "Legal pages use the exact editor header and footer",
+      "pass": true
+    },
+    {
+      "name": "Legal pages retain the shared product branding",
+      "pass": true
+    },
+    {
+      "name": "Footer links expose permanent BlueMask routes",
       "pass": true
     },
     {
@@ -86,7 +98,11 @@
       "pass": true
     },
     {
-      "name": "Shared About navigation opens the editor dialog from legal pages",
+      "name": "About is a permanent initial-HTML page",
+      "pass": true
+    },
+    {
+      "name": "Primary paper button stays readable on hover",
       "pass": true
     },
     {
@@ -203,6 +219,10 @@
       "pass": true
     },
     {
+      "name": "Offline edition retains its built-in About copy",
+      "pass": true
+    },
+    {
       "name": "Offline file completes image creation, masking and PNG export",
       "pass": true
     },
@@ -233,11 +253,51 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/site.webmanifest",
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/favicon.ico",
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/engine.5bb27f458462.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/app.0f33e3dddd09.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/favicon.26925afc6d47.ico",
       "method": "GET"
     },
     {
@@ -245,31 +305,223 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/site.webmanifest",
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/privacy.html",
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/site.webmanifest",
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/support.html",
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/site.webmanifest",
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/index.html",
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/site.webmanifest",
+      "url": "http://127.0.0.1:8791/assets/engine.5bb27f458462.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/app.0f33e3dddd09.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/privacy",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/support",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/about",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/footer-bg-dark.098f0bd790b9.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/privacy-scroll.5d06de5896fd.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/offline",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/footer-bg-dark.098f0bd790b9.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/privacy-scroll.5d06de5896fd.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
       "method": "GET"
     },
     {
@@ -277,7 +529,143 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/site.webmanifest",
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/engine.5bb27f458462.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/app.0f33e3dddd09.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/about",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/footer-bg-dark.098f0bd790b9.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/privacy-scroll.5d06de5896fd.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/engine.5bb27f458462.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/app.0f33e3dddd09.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
       "method": "GET"
     }
   ],

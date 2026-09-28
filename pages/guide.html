@@ -1,0 +1,42 @@
+<header class="article-header">
+  <h1>How to redact sensitive information from a screenshot</h1>
+  <p class="article-lead">Making text unreadable is not always the same as removing it.</p>
+  <p>Blur and pixelation transform the original pixels but can retain measurements of them. A solid mask replaces the selected pixels instead. For passwords, seed phrases, addresses, names, account details, private messages, or other sensitive text, use solid replacement rather than cosmetic blur.</p>
+</header>
+
+<section>
+  <h2>1. Identify every sensitive detail</h2>
+  <p>Look for the obvious secret and the information surrounding it:</p>
+  <ul class="detail-list">
+    <li>names and usernames</li><li>email and physical addresses</li><li>phone numbers</li><li>account and wallet identifiers</li><li>private messages</li><li>QR codes</li><li>profile photographs</li><li>timestamps and location clues</li><li>browser tabs and window titles</li><li>reflections and repeated information</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2. Use secure masking</h2>
+  <p>Open BlueMask and leave <strong>Secure masking</strong> selected. BlueMask accepts a PNG, JPEG, or WebP up to 35 MB (35 × 1024 × 1024 bytes), 24 megapixels, and 12,000 pixels on the longer side. Draw over the complete sensitive detail, including its edges.</p>
+  <p>Cosmetic blur is appropriate for visual effects. It should not be used as the privacy boundary for sensitive text.</p>
+</section>
+
+<section>
+  <h2>3. Cover enough context</h2>
+  <p>A tightly fitted box may reveal the length of a name or number. Sometimes covering the complete line or surrounding label reveals less information.</p>
+  <p>Avoid publishing several differently masked versions of the same image. Comparing them may expose details that one version hides.</p>
+</section>
+
+<section>
+  <h2>4. Review at 100%</h2>
+  <p>Inspect the complete image at full size. Check edges, repeated details, reflections, thumbnails, and information elsewhere in the screenshot.</p>
+</section>
+
+<section>
+  <h2>5. Export a new flattened image</h2>
+  <p>BlueMask exports a new opaque PNG named <code>bluemask.png</code>. Transparent areas are flattened onto white. The export keeps the edited image's width and height. It does not copy the original filename, camera details, GPS metadata, or color profile.</p>
+  <p>Inspect the exported PNG before sharing it.</p>
+</section>
+
+<section>
+  <h2>6. Use the offline edition for highly sensitive images</h2>
+  <p>Download the self-contained edition, disconnect the device before opening the private image, complete the masking and export, inspect the result, and close BlueMask before reconnecting.</p>
+  <p class="article-links"><a href="/">Open BlueMask</a><a href="/tests">Read the recovery tests</a><a href="/offline">Use BlueMask offline</a></p>
+</section>

@@ -164,6 +164,49 @@ resource headersRule 'Microsoft.Cdn/profiles/ruleSets/rules@2021-06-01' = if (de
   }
 }
 
+resource offlineHeadersRule 'Microsoft.Cdn/profiles/ruleSets/rules@2021-06-01' = if (deployFrontDoor) {
+  parent: ruleSet
+  name: 'offline-download-headers'
+  properties: {
+    order: 2
+    matchProcessingBehavior: 'Continue'
+    conditions: [
+      {
+        name: 'UrlPath'
+        parameters: {
+          typeName: 'DeliveryRuleUrlPathMatchConditionParameters'
+          operator: 'Equal'
+          negateCondition: false
+          matchValues: [
+            '/BlueMask.html'
+          ]
+          transforms: []
+        }
+      }
+    ]
+    actions: [
+      {
+        name: 'ModifyResponseHeader'
+        parameters: {
+          typeName: 'DeliveryRuleHeaderActionParameters'
+          headerAction: 'Overwrite'
+          headerName: 'X-Robots-Tag'
+          value: 'noindex'
+        }
+      }
+      {
+        name: 'ModifyResponseHeader'
+        parameters: {
+          typeName: 'DeliveryRuleHeaderActionParameters'
+          headerAction: 'Overwrite'
+          headerName: 'Content-Disposition'
+          value: 'attachment; filename="BlueMask.html"'
+        }
+      }
+    ]
+  }
+}
+
 resource customDomain 'Microsoft.Cdn/profiles/customDomains@2023-05-01' = if (deployFrontDoor) {
   parent: profile
   name: customDomainName
@@ -182,6 +225,7 @@ resource route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2021-06-01' = if (dep
   dependsOn: [
     origin
     headersRule
+    offlineHeadersRule
   ]
   properties: {
     originGroup: {
@@ -198,6 +242,23 @@ resource route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2021-06-01' = if (dep
     httpsRedirect: 'Enabled'
     linkToDefaultDomain: 'Enabled'
     enabledState: 'Enabled'
+    cacheConfiguration: {
+      queryStringCachingBehavior: 'IgnoreQueryString'
+      compressionSettings: {
+        isCompressionEnabled: true
+        contentTypesToCompress: [
+          'text/html'
+          'text/css'
+          'text/javascript'
+          'application/javascript'
+          'application/json'
+          'application/manifest+json'
+          'application/xml'
+          'text/plain'
+          'image/svg+xml'
+        ]
+      }
+    }
     customDomains: [
       {
         id: customDomain.id
