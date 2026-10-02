@@ -4,8 +4,8 @@ param location string = resourceGroup().location
 @description('Name prefix for Azure resources')
 param prefix string = 'bluemask'
 
-@description('Create Azure Front Door in front of the static website')
-param deployFrontDoor bool = true
+@description('Create a dedicated Azure Front Door profile (opt-in; shared edge is managed separately)')
+param deployFrontDoor bool = false
 
 @description('Hostname Front Door serves in addition to its azurefd.net endpoint')
 param customDomainHostName string = 'bluemask.bluethroatlabs.com'
