@@ -18,11 +18,15 @@ export async function browser() {
     try { accessSync(candidate, constants.X_OK); return true; } catch { return false; }
   });
   if (!executable) throw new Error('Chrome or Chromium was not found. Set CHROME_BIN to its executable path.');
-  const child = spawn(executable, [
+  const args = [
     '--headless=new', '--no-first-run', '--no-default-browser-check', '--disable-extensions',
     '--disable-background-networking', '--disable-component-update', '--remote-debugging-port=0',
     '--remote-debugging-address=127.0.0.1', `--user-data-dir=${profile}`, 'about:blank'
-  ], { stdio: ['ignore', 'ignore', 'pipe'] });
+  ];
+  if (process.env.CI) {
+    args.splice(1, 0, '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--allow-file-access-from-files');
+  }
+  const child = spawn(executable, args, { stdio: ['ignore', 'ignore', 'pipe'] });
   let stderr = '';
   const endpoint = await new Promise((resolve, reject) => {
     const timer = setTimeout(() => reject(new Error('Chrome startup timeout: ' + stderr.slice(-1000))), 20000);

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Build dist/, publish it to a storage static website, then put Front Door in front.
+# Build dist/ and publish it to a storage static website. Front Door deployment
+# is optional because production normally uses the existing shared edge.
 #
 #   ./infra/deploy.sh
 set -euo pipefail
@@ -10,6 +11,12 @@ RG="${RG:-rg-bluemask-wehi-sandbox}"
 PREFIX="${PREFIX:-bluemask}"
 LOCATION="${LOCATION:-centralindia}"
 DEPLOYMENT="${PREFIX}-static"
+DEPLOY_FRONT_DOOR="${DEPLOY_FRONT_DOOR:-false}"
+
+if [[ "$DEPLOY_FRONT_DOOR" != "true" && "$DEPLOY_FRONT_DOOR" != "false" ]]; then
+  echo "DEPLOY_FRONT_DOOR must be 'true' or 'false'." >&2
+  exit 1
+fi
 
 az account set --subscription "$SUBSCRIPTION"
 
@@ -105,6 +112,12 @@ done < <(find "$ROOT/dist/assets" "$ROOT/dist/og" -type f -print)
 
 echo "Checking origin ${ORIGIN_URL}..."
 curl -fsS -o /dev/null --max-time 30 "${ORIGIN_URL}"
+
+if [[ "$DEPLOY_FRONT_DOOR" == "false" ]]; then
+  echo "Skipping Front Door deployment; the shared edge remains unchanged."
+  echo "Origin: ${ORIGIN_URL}"
+  exit 0
+fi
 
 echo "Deploying Front Door..."
 set +e
