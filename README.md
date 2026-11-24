@@ -214,9 +214,10 @@ light appearance and the Privacy Scroll.
 Browser-engine evidence is currently headless Chrome on macOS. Phone emulation is
 not a physical iPhone/Safari or Android/Chrome test.
 
-GitHub Actions runs build/reproducibility and JavaScript syntax checks. It does not
-run the macOS browser suites or repeat the AI experiments. The optional research
-environment and exact checkpoint provenance are documented in
+GitHub Actions checks formatting, lints JavaScript and Python, then runs the
+build check and headless Chrome browser suites. Pushed tags deploy `dist/` to
+the Azure sandbox with `infra/deploy.sh`. CI does not repeat the AI experiments.
+The optional research environment and exact checkpoint provenance are documented in
 [research/README.md](research/README.md).
 
 ## Repository map

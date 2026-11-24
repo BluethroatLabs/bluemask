@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # Build dist/ and publish it to a storage static website. A dedicated Front Door is opt-in.
 #
 #   ./infra/deploy.sh
@@ -11,6 +12,7 @@ PREFIX="${PREFIX:-bluemask}"
 LOCATION="${LOCATION:-centralindia}"
 DEPLOYMENT="${PREFIX}-static"
 DEPLOY_FRONT_DOOR="${DEPLOY_FRONT_DOOR:-false}"
+
 
 if [[ "$DEPLOY_FRONT_DOOR" != true && "$DEPLOY_FRONT_DOOR" != false ]]; then
   echo "DEPLOY_FRONT_DOOR must be true or false" >&2
@@ -112,7 +114,14 @@ done < <(find "$ROOT/dist/assets" "$ROOT/dist/og" -type f -print)
 echo "Checking origin ${ORIGIN_URL}..."
 curl -fsS -o /dev/null --max-time 30 "${ORIGIN_URL}"
 
-echo "Reconciling infrastructure (dedicated Front Door: ${DEPLOY_FRONT_DOOR})..."
+if [[ "$DEPLOY_FRONT_DOOR" == "false" ]]; then
+  echo "Skipping Front Door deployment; the shared edge remains unchanged."
+  echo "Origin: ${ORIGIN_URL}"
+  exit 0
+fi
+
+echo "Deploying Front Door..."
+
 set +e
 FD_OUTPUTS="$(az deployment group create \
   --resource-group "$RG" \

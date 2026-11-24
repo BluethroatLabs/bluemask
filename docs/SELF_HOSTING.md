@@ -31,6 +31,7 @@ research reproduction.
 Build integrity and source-archive reproduction:
 
 ```sh
+python3 scripts/check_format.py
 python3 scripts/check_build.py
 ```
 
@@ -47,8 +48,9 @@ separate test UI. The reports in `evidence/runtime/` bind checks to the
 delivered HTML hash. `verify.mjs` accepts an optional URL argument.
 `interactions.mjs` currently expects port 8791.
 
-GitHub Actions runs build/reproducibility and JavaScript syntax checks. It does
-not run the macOS browser suites or repeat the AI experiments.
+GitHub Actions checks formatting, lints JavaScript and Python, and runs the build
+check and headless Chrome browser suites. Pushed tags deploy `dist/` with
+`infra/deploy.sh`. It does not repeat the AI experiments.
 
 ## Publish a static copy
 
@@ -81,6 +83,17 @@ product notes, or browser profiles.
 After deployment, inspect response headers and compare served HTML with the
 intended build. A local test is not evidence about bytes modified by a hosting
 platform.
+
+## Azure tag deployments
+
+The `github-bluemask` managed identity trusts only the GitHub `production`
+environment through OIDC. Its Azure permissions are limited to BlueMask group
+deployments and the BlueMask storage account. The workflow explicitly sets
+`DEPLOY_FRONT_DOOR=false` so the existing shared edge remains unchanged.
+
+Pushing any Git tag runs formatting, lint, and tests before the
+`production` deployment. Configure required reviewers on the GitHub
+`production` environment if deployments need manual approval.
 
 See [Releasing](RELEASING.md) for the artifact inventory, device checks, and the
 steps still required before a public production sign-off.

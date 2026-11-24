@@ -1,16 +1,34 @@
-name: Build and verify
+name: CI
 
 on:
   push:
     branches: [main]
+    tags: ['**']
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  build:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.14'
+      - name: Check text formatting
+        run: python3 scripts/check_format.py
+
+  lint:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -25,10 +43,116 @@ jobs:
           node-version: '22'
       - name: Check JavaScript syntax
         run: |
+          set -euo pipefail
           node --check app.js
           node --check engine.js
+          node --check theme.js
+          node --check theme-boot.js
           for script in scripts/*.mjs research/*.mjs; do
             node --check "$script"
           done
+      - name: Check Python syntax
+        run: |
+          set -euo pipefail
+          python3 -m py_compile build.py serve.py scripts/check_build.py
+          python3 -m py_compile research/generate_fixtures.py research/package_evidence.py research/run_dpir.py research/run_darkir.py
+      - name: Check deploy script
+        run: bash -n infra/deploy.sh
+
+  test:
+    needs: [format, lint]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Ensure Chrome
+        run: |
+          set -euo pipefail
+          if [[ -x /usr/bin/google-chrome || -x /usr/bin/google-chrome-stable ]]; then
+            exit 0
+          fi
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
       - name: Verify release artifacts and source archive
         run: python3 scripts/check_build.py
+      - name: Run browser checks
+        run: |
+          set -euo pipefail
+          python3 serve.py --port 8791 > /tmp/bluemask-serve.log 2>&1 &
+          echo $! > /tmp/bluemask-serve.pid
+          cleanup() { kill "$(cat /tmp/bluemask-serve.pid)" >/dev/null 2>&1 || true; }
+          trap cleanup EXIT
+          ready=0
+          for _ in $(seq 1 50); do
+            if curl -fsS -o /dev/null http://127.0.0.1:8791/; then
+              ready=1
+              break
+            fi
+            sleep 0.2
+          done
+          if [[ "$ready" -ne 1 ]]; then
+            echo "Local server did not start" >&2
+            cat /tmp/bluemask-serve.log >&2
+            exit 1
+          fi
+          node scripts/verify.mjs
+          node scripts/interactions.mjs
+
+  deploy:
+    needs: test
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: production
+    # OIDC only. Federated credential subject must be:
+    #   repo:BluethroatLabs/bluemask:environment:production
+    # Audience: api://AzureADTokenExchange
+    # Repository secrets: AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.14'
+      - name: Require Azure login settings
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          set -euo pipefail
+          missing=()
+          [[ -n "${AZURE_CLIENT_ID}" ]] || missing+=("AZURE_CLIENT_ID")
+          [[ -n "${AZURE_TENANT_ID}" ]] || missing+=("AZURE_TENANT_ID")
+          [[ -n "${AZURE_SUBSCRIPTION_ID}" ]] || missing+=("AZURE_SUBSCRIPTION_ID")
+          if ((${#missing[@]})); then
+            echo "Add these Actions repository secrets before deploy can run: ${missing[*]}" >&2
+            exit 1
+          fi
+      - name: Azure login
+        uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Deploy static site
+        env:
+          AZURE_CORE_OUTPUT: none
+          SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          RG: rg-bluemask-wehi-sandbox
+          PREFIX: bluemask
+          LOCATION: centralindia
+          DEPLOY_FRONT_DOOR: 'false'
+        run: ./infra/deploy.sh

@@ -1,6 +1,6 @@
 {
-  "tested_at": "2026-09-28T17:16:59.073Z",
-  "html_sha256": "7dbd7dcec29062a771943512695bb6ce53383834c07f479c3e8d983756e3d98d",
+  "tested_at": "2026-09-30T07:43:20.307Z",
+  "html_sha256": "c494268c4ba23a75231651c98dbe9f0b27d1874763906b5643359cd76bb74f74",
   "checks": [
     {
       "name": "Real mouse drag creates the selected image-space mask",

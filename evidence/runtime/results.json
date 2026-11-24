@@ -1,13 +1,13 @@
 {
-  "tested_at": "2026-09-28T17:16:53.004Z",
+  "tested_at": "2026-09-30T07:43:14.194Z",
   "browser": {
     "protocolVersion": "1.3",
-    "product": "Chrome/154.0.8037.57",
-    "revision": "@73c14f6228d7cd537c855007e8f88678969cc0eb",
-    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
-    "jsVersion": "15.4.80.11"
+    "product": "Chrome/153.0.8010.12",
+    "revision": "@971a7443b0c9b0a9b2860529b33331b76077ec62",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "jsVersion": "15.3.76.4"
   },
-  "html_sha256": "7dbd7dcec29062a771943512695bb6ce53383834c07f479c3e8d983756e3d98d",
+  "html_sha256": "c494268c4ba23a75231651c98dbe9f0b27d1874763906b5643359cd76bb74f74",
   "checks": [
     {
       "name": "Appearance preference survives a reload",
@@ -19,13 +19,13 @@
       "detail": [
         {
           "viewport": 639,
-          "expected": 624,
-          "actual": 624
+          "expected": 639,
+          "actual": 639
         },
         {
           "viewport": 640,
-          "expected": 625,
-          "actual": 625
+          "expected": 640,
+          "actual": 640
         },
         {
           "viewport": 767,
@@ -34,8 +34,8 @@
         },
         {
           "viewport": 768,
-          "expected": 753,
-          "actual": 753
+          "expected": 768,
+          "actual": 768
         },
         {
           "viewport": 1023,
@@ -44,8 +44,8 @@
         },
         {
           "viewport": 1024,
-          "expected": 1009,
-          "actual": 1009
+          "expected": 1024,
+          "actual": 1024
         },
         {
           "viewport": 1279,
@@ -54,8 +54,8 @@
         },
         {
           "viewport": 1280,
-          "expected": 1265,
-          "actual": 1265
+          "expected": 1280,
+          "actual": 1280
         },
         {
           "viewport": 1535,
@@ -64,8 +64,8 @@
         },
         {
           "viewport": 1536,
-          "expected": 1521,
-          "actual": 1521
+          "expected": 1536,
+          "actual": 1536
         }
       ]
     },
@@ -99,6 +99,18 @@
     },
     {
       "name": "About is a permanent initial-HTML page",
+      "pass": true
+    },
+    {
+      "name": "Legacy privacy.html redirects to the permanent privacy page",
+      "pass": true
+    },
+    {
+      "name": "Legacy about hash opens the permanent About page",
+      "pass": true
+    },
+    {
+      "name": "Legacy tests hash opens the permanent Tests page",
       "pass": true
     },
     {
@@ -166,6 +178,7 @@
       "pass": true,
       "detail": [
         "IHDR",
+        "IDAT",
         "IDAT",
         "IDAT",
         "IDAT",
@@ -257,7 +270,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -274,10 +287,6 @@
     },
     {
       "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
-      "method": "GET"
-    },
-    {
-      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
       "method": "GET"
     },
     {
@@ -293,7 +302,11 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/app.0f33e3dddd09.js",
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/app.97dbc7d8b28b.js",
       "method": "GET"
     },
     {
@@ -309,7 +322,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -333,7 +346,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/app.0f33e3dddd09.js",
+      "url": "http://127.0.0.1:8791/assets/app.97dbc7d8b28b.js",
       "method": "GET"
     },
     {
@@ -357,7 +370,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -397,7 +410,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -437,7 +450,235 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/footer-bg-dark.098f0bd790b9.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/privacy-scroll.5d06de5896fd.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/privacy.html",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/privacy",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/index.html",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/engine.5bb27f458462.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/app.97dbc7d8b28b.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/about",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/footer-bg-dark.098f0bd790b9.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/privacy-scroll.5d06de5896fd.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/site.0e26941b63ab.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/index.html",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluethroat-wordmark.ed1e6ce486a7.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-full.d4ded294d036.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/bluemask-small.e6bb64bdaea3.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme.ef1d11ab4824.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/engine.5bb27f458462.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/app.97dbc7d8b28b.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/tests",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/instrument-serif-latin.60c06664b5a9.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/geist-mono-latin.5f3d6ad60f29.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/theme-boot.62f3c85cf003.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -485,7 +726,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -533,7 +774,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -557,7 +798,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/app.0f33e3dddd09.js",
+      "url": "http://127.0.0.1:8791/assets/app.97dbc7d8b28b.js",
       "method": "GET"
     },
     {
@@ -581,7 +822,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -629,7 +870,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/styles.fee38f2b0de7.css",
+      "url": "http://127.0.0.1:8791/assets/styles.d61eac6c956b.css",
       "method": "GET"
     },
     {
@@ -653,7 +894,7 @@
       "method": "GET"
     },
     {
-      "url": "http://127.0.0.1:8791/assets/app.0f33e3dddd09.js",
+      "url": "http://127.0.0.1:8791/assets/app.97dbc7d8b28b.js",
       "method": "GET"
     },
     {

@@ -21,8 +21,9 @@ bundler or automatic rebuild. Editing `dist/` directly loses changes on rebuild.
 The check commands are in [Self-hosting](SELF_HOSTING.md). `check_build.py`
 rebuilds, verifies artifact hashes and hosted/offline parity, extracts the
 source archive into a temporary directory, and checks that rebuilding it produces
-the same artifacts. GitHub Actions runs this check and JavaScript syntax checks
-on pushes and pull requests. CI does not run the macOS browser or AI suites.
+the same artifacts. GitHub Actions checks formatting, lints syntax, and runs
+this check and the browser suites on pushes and pull requests. Pushed tags
+deploy to Azure. CI does not run the AI suites.
 
 The browser suites write reports and screenshots to `evidence/runtime/`.
 The two committed runtime reports represent one recorded build, identified by
