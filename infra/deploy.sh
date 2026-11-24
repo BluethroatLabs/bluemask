@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Build dist/ and publish it to a storage static website. Front Door deployment
-# is optional because production normally uses the existing shared edge.
+
+# Build dist/ and publish it to a storage static website. A dedicated Front Door is opt-in.
 #
 #   ./infra/deploy.sh
 set -euo pipefail
@@ -13,8 +13,9 @@ LOCATION="${LOCATION:-centralindia}"
 DEPLOYMENT="${PREFIX}-static"
 DEPLOY_FRONT_DOOR="${DEPLOY_FRONT_DOOR:-false}"
 
-if [[ "$DEPLOY_FRONT_DOOR" != "true" && "$DEPLOY_FRONT_DOOR" != "false" ]]; then
-  echo "DEPLOY_FRONT_DOOR must be 'true' or 'false'." >&2
+
+if [[ "$DEPLOY_FRONT_DOOR" != true && "$DEPLOY_FRONT_DOOR" != false ]]; then
+  echo "DEPLOY_FRONT_DOOR must be true or false" >&2
   exit 1
 fi
 
@@ -120,6 +121,7 @@ if [[ "$DEPLOY_FRONT_DOOR" == "false" ]]; then
 fi
 
 echo "Deploying Front Door..."
+
 set +e
 FD_OUTPUTS="$(az deployment group create \
   --resource-group "$RG" \
@@ -128,7 +130,7 @@ FD_OUTPUTS="$(az deployment group create \
   --parameters \
     prefix="$PREFIX" \
     location="$LOCATION" \
-    deployFrontDoor=true \
+    deployFrontDoor="$DEPLOY_FRONT_DOOR" \
   --query "properties.outputs" \
   --output json 2>/tmp/bluemask-frontdoor.err)"
 FD_STATUS=$?
@@ -137,12 +139,13 @@ set -e
 if [[ "$FD_STATUS" -ne 0 ]]; then
   cat /tmp/bluemask-frontdoor.err >&2
   echo
-  echo "Front Door was blocked. Storage origin is live:"
+  echo "Infrastructure deployment failed. Storage origin is live:"
   echo "  ${ORIGIN_URL}"
-  echo
-  echo "Forward this to the resource group owner:"
-  echo
-  cat <<'EOF'
+  if [[ "$DEPLOY_FRONT_DOOR" == true ]]; then
+    echo
+    echo "Forward this to the resource group owner:"
+    echo
+    cat <<'EOF'
 Please update policy definition bluethroat-bluemask-allowed-provider-namespaces
 (assignment bluemask-wehi-allowed-provider-namespaces on rg-bluemask-wehi-sandbox)
 so Azure Front Door Standard can be created.
@@ -171,7 +174,8 @@ If you would rather list resource types explicitly, allow:
 No extra role is needed for the existing Contributor on this resource group.
 Front Door profiles use location "global"; this resource group has no location deny.
 EOF
-else
+  fi
+elif [[ "$DEPLOY_FRONT_DOOR" == true ]]; then
   FD_URL="$(python3 -c 'import json,sys; print(json.loads(sys.argv[1])["frontDoorUrl"]["value"])' "$FD_OUTPUTS")"
   echo "Waiting for Front Door to serve ${FD_URL}..."
   for _ in $(seq 1 18); do
@@ -182,6 +186,8 @@ else
   done
   curl -fsS -o /dev/null --max-time 45 "$FD_URL"
   echo "Front Door is live: ${FD_URL}"
+else
+  echo "Dedicated Front Door unchanged; existing edge routing is managed separately."
 fi
 
 echo "Removing Container Apps stack..."
@@ -190,6 +196,6 @@ az containerapp env delete --resource-group "$RG" --name "${PREFIX}-env" --yes -
 az monitor log-analytics workspace delete --resource-group "$RG" --workspace-name "${PREFIX}-logs" --yes --output none || true
 
 echo "Origin: ${ORIGIN_URL}"
-if [[ "$FD_STATUS" -eq 0 ]]; then
+if [[ "$FD_STATUS" -eq 0 && "$DEPLOY_FRONT_DOOR" == true ]]; then
   echo "Front Door: ${FD_URL}"
 fi
